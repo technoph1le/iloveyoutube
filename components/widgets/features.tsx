@@ -8,9 +8,10 @@ import {
   ListOrdered,
   PanelsTopLeft,
 } from "lucide-react";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardContent } from "../ui/card";
 import Link from "next/link";
 import React from "react";
+import { Badge } from "../ui/badge";
 
 const FEATURE_ITEMS = [
   {
@@ -18,6 +19,7 @@ const FEATURE_ITEMS = [
     title: "Thumbnail Downloader",
     description: "Grab any YouTube thumbnail in full resolution.",
     link: "/thumbnail-downloader",
+    published: true,
   },
   {
     icon: <ImageIcon />,
@@ -73,7 +75,12 @@ export default function Features() {
             <Card className="hover:outline-1 h-full">
               <CardContent className="space-y-4">
                 {React.cloneElement(feature.icon, { size: 42 })}
-                <h3 className="text-lg font-bold">{feature.title}</h3>
+                <h3 className="text-lg font-bold flex items-center gap-2">
+                  {feature.title}
+                  {feature.published ? (
+                    <Badge variant="outline">New</Badge>
+                  ) : null}
+                </h3>
                 <p className="text-sm text-muted-foreground">
                   {feature.description}
                 </p>
