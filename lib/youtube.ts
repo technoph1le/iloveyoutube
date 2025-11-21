@@ -1,6 +1,11 @@
-export function extractYouTubeId(input: string) {
+/**
+ * Extracts YouTube video ID from the video URL.
+ * @example
+ * https://www.youtube.com/watch?v=BhRi7fJzPgk => BhRi7fJzPgk
+ */
+export function extractYouTubeId(videoURL: string) {
   try {
-    const url = new URL(input);
+    const url = new URL(videoURL);
 
     // Standard URL: ?v=ID
     if (url.searchParams.get("v")) {
@@ -25,6 +30,6 @@ export function extractYouTubeId(input: string) {
     return null;
   } catch {
     // plain ID already
-    return input;
+    return videoURL;
   }
 }

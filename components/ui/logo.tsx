@@ -10,8 +10,8 @@ export default function Logo() {
 
   return (
     <Link href="/">
-      <Image src="/logo-light.svg" {...props} className="dark:hidden" />
-      <Image src="/logo-dark.svg" {...props} className="hidden dark:block" />
+      <Image src="/assets/logo-light.svg" {...props} className="dark:hidden" />
+      <Image src="/assets/logo-dark.svg" {...props} className="hidden dark:block" />
     </Link>
   );
 }
