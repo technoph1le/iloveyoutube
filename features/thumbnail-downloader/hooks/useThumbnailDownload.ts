@@ -35,9 +35,11 @@ export function useThumbnailDownload() {
 
       const data = await res.json();
       setThumbnails(data);
-    } catch (err: any) {
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "An unknown error occurred";
       setThumbnails(null);
-      setError(err?.message ?? "An unknown error occurred");
+      setError(message);
     } finally {
       setIsLoading(false);
     }

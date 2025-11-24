@@ -33,14 +33,14 @@ export default function Page() {
 
   useEffect(() => {
     fetchThumbnails(DEFAULT_VIDEO_URL);
-  }, []);
+  }, [fetchThumbnails]);
 
   return (
     <section>
       <div className="wrapper-xs py-8 space-y-8">
-        <h2 className="text-3xl font-bold text-center">
+        <h1 className="text-3xl font-bold text-center">
           YouTube Thumbnail Downloader
-        </h2>
+        </h1>
         <InputGroup className="max-w-lg mx-auto">
           <InputGroupInput
             value={videoURL}
