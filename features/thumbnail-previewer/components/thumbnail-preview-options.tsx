@@ -5,16 +5,19 @@ import {
   Smartphone,
   UserSquare,
   Tv,
+  ShuffleIcon,
 } from "lucide-react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { slugify } from "@/lib/utils";
+import { DesktopHome } from "./thumbnail-preview-content";
+import { Button } from "@/components/ui/button";
 
 const THUMBNAIL_PREVIEW_OPTIONS = [
   {
     label: "Desktop Home",
     icon: <Monitor />,
-    content: <div>Desktop Home</div>,
+    content: <DesktopHome />,
   },
   {
     label: "Desktop Sidebar",
@@ -59,29 +62,37 @@ export default function ThumbnailPreviewOptions({
   videoTitle,
   channelName,
 }: Props) {
+  console.log(imgPath, videoTitle, channelName);
+
   return (
     <Tabs
       defaultValue={slugify(THUMBNAIL_PREVIEW_OPTIONS[0].label)}
       className="w-full"
     >
-      <TabsList className="h-auto w-fit mx-auto">
-        {THUMBNAIL_PREVIEW_OPTIONS.map((option) => (
-          <TabsTrigger
-            key={option.label}
-            value={slugify(option.label)}
-            className="px-4 py-2"
-          >
-            {option.icon}
-            {option.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      <div className="flex gap-4 items-center w-fit mx-auto">
+        <TabsList className="h-auto">
+          {THUMBNAIL_PREVIEW_OPTIONS.map((option) => (
+            <TabsTrigger
+              key={option.label}
+              value={slugify(option.label)}
+              className="px-4 py-2"
+            >
+              {option.icon}
+              {option.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        <Button variant="outline" size="lg">
+          <ShuffleIcon /> Shuffle
+        </Button>
+      </div>
       {THUMBNAIL_PREVIEW_OPTIONS.map((option) => (
-        <TabsContent key={option.label} value={slugify(option.label)}>
+        <TabsContent
+          key={option.label}
+          value={slugify(option.label)}
+          className="py-4 min-h-screen"
+        >
           {option.content}
-          <p>
-            {imgPath}, {videoTitle}, {channelName}
-          </p>
         </TabsContent>
       ))}
     </Tabs>

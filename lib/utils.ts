@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function capitalize(string: string) {
+  return string[0].toUpperCase() + string.slice(1);
+}
+
 export function slugify(string: string, separator = "-") {
   return string
     .toString() // Cast to string (optional)

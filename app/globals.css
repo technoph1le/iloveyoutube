@@ -141,4 +141,8 @@
   .wrapper-lg {
     @apply mx-auto max-w-[90rem] px-4;
   }
+
+  .wrapper-xl {
+    @apply mx-auto max-w-[100rem] px-4;
+  }
 }

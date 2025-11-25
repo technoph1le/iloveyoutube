@@ -37,7 +37,7 @@ export default function UploadCard({ onUpload, imgPath, setImgPath }: Props) {
   return (
     <Card
       {...getRootProps()}
-      className={`w-md mx-auto py-0 border-dashed border-2 aspect-video overflow-hidden justify-center items-center ${
+      className={`max-w-md w-full mx-auto py-0 border-dashed border-2 aspect-video overflow-hidden justify-center items-center ${
         (isDragActive || isHovered) && !imgPath
           ? "border-primary/50 bg-muted"
           : ""
