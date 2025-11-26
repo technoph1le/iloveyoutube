@@ -1,68 +1,46 @@
 "use client";
 
 import { ThumbnailDownloadVariants } from "@/features/thumbnail-downloader/types";
+import useFetch from "@/hooks/useFetch";
 import { extractYouTubeId } from "@/lib/youtube";
-import { useCallback, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 
-export const DEFAULT_VIDEO_URL =
-  "https://youtu.be/H8bQYBtF4bQ?si=uSp4RaqzzzLOZp2C";
+export const DEFAULT_API_URL = "/api/thumbnails/download?id=H8bQYBtF4bQ";
 
 export function useThumbnailDownload() {
-  const [videoURL, setVideoURL] = useState<string>("");
-  const [thumbnails, setThumbnails] =
-    useState<ThumbnailDownloadVariants | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [videoURL, setVideoURL] = useState("");
+  const [apiURL, setApiURL] = useState<string | null>(DEFAULT_API_URL);
 
-  const fetchThumbnails = useCallback(async (videoURL: string) => {
-    try {
-      setError(null);
-      setIsLoading(true);
+  const {
+    data: thumbnails,
+    loading,
+    error,
+  } = useFetch<ThumbnailDownloadVariants>(apiURL || "");
 
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
       const videoId = extractYouTubeId(videoURL);
       if (!videoId) {
-        setThumbnails(null);
-        setError("Invalid YouTube URL — missing video id.");
+        setApiURL(null);
         return;
       }
-
-      const res = await fetch(`/api/thumbnails/download?id=${videoId}`);
-      if (!res.ok) {
-        setThumbnails(null);
-        setError(`Request failed with status ${res.status}`);
-        return;
-      }
-
-      const data = await res.json();
-      setThumbnails(data);
-    } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "An unknown error occurred";
-      setThumbnails(null);
-      setError(message);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  const handleSubmit = useCallback(async () => {
-    fetchThumbnails(videoURL);
-  }, [videoURL, fetchThumbnails]);
+      setApiURL(`/api/thumbnails/download?id=${videoId}`);
+    },
+    [videoURL]
+  );
 
   const handleClear = useCallback(() => {
     setVideoURL("");
-    setError(null);
-    fetchThumbnails(DEFAULT_VIDEO_URL);
-  }, [fetchThumbnails]);
+    setApiURL(DEFAULT_API_URL);
+  }, []);
 
   return {
     videoURL,
     setVideoURL,
     thumbnails,
     error,
-    setError,
-    isLoading,
-    fetchThumbnails,
+    loading,
     handleClear,
     handleSubmit,
   };

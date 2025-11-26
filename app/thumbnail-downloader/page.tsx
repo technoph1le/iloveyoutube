@@ -1,22 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
 import { ArrowRightIcon, CircleXIcon } from "lucide-react";
 
-import {
-  useThumbnailDownload,
-  DEFAULT_VIDEO_URL,
-} from "@/features/thumbnail-downloader/hooks/useThumbnailDownload";
+import { useThumbnailDownload } from "@/features/thumbnail-downloader/hooks/useThumbnailDownload";
 import ThumbnailDownloadPreview from "@/features/thumbnail-downloader/components/thumbnail-download-preview";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { toast } from "sonner";
 
 export default function Page() {
   const {
@@ -24,16 +19,10 @@ export default function Page() {
     setVideoURL,
     thumbnails,
     error,
-    setError,
-    isLoading,
-    fetchThumbnails,
+    loading,
     handleClear,
     handleSubmit,
   } = useThumbnailDownload();
-
-  useEffect(() => {
-    fetchThumbnails(DEFAULT_VIDEO_URL);
-  }, [fetchThumbnails]);
 
   return (
     <section>
@@ -41,32 +30,28 @@ export default function Page() {
         <h1 className="text-3xl font-bold text-center">
           YouTube Thumbnail Downloader
         </h1>
-        <InputGroup className="max-w-lg mx-auto">
-          <InputGroupInput
-            value={videoURL}
-            onChange={(e) => setVideoURL(e.target.value)}
-            placeholder="Enter the YouTube video link"
-          />
-          <InputGroupAddon align="inline-end">
-            {videoURL && (
-              <InputGroupButton onClick={handleClear}>
-                <CircleXIcon />
+        <form onSubmit={handleSubmit}>
+          <InputGroup className="max-w-lg mx-auto">
+            <InputGroupInput
+              value={videoURL}
+              onChange={(e) => setVideoURL(e.target.value)}
+              placeholder="Enter the YouTube video link"
+              required
+            />
+            <InputGroupAddon align="inline-end">
+              {videoURL && (
+                <InputGroupButton type="reset" onClick={handleClear}>
+                  <CircleXIcon />
+                </InputGroupButton>
+              )}
+              <InputGroupButton type="submit" disabled={loading}>
+                <ArrowRightIcon />
               </InputGroupButton>
-            )}
-            <InputGroupButton onClick={handleSubmit} disabled={isLoading}>
-              <ArrowRightIcon />
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
+            </InputGroupAddon>
+          </InputGroup>
+        </form>
 
-        {error && (
-          <Card className="max-w-lg mx-auto border border-destructive bg-destructive/10">
-            <CardContent className="flex items-center justify-between gap-4">
-              <p>{error}</p>
-              <Button onClick={() => setError(null)}>Dismiss</Button>
-            </CardContent>
-          </Card>
-        )}
+        {error && toast.error(`Error occured: ${error}`)}
 
         {thumbnails && <ThumbnailDownloadPreview thumbnails={thumbnails} />}
       </div>
