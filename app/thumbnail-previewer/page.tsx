@@ -1,8 +1,6 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
-
-import ThumbnailPreviewOptions from "@/features/thumbnail-previewer/components/thumbnail-preview-options";
+import { FormEvent, useContext, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,11 +12,12 @@ import {
 import { Input } from "@/components/ui/input";
 import UploadCard from "@/components/widgets/upload-card";
 import { ArrowRightIcon, RotateCcwIcon, TriangleAlertIcon } from "lucide-react";
+import { ThumbnailPreviewContext } from "@/features/thumbnail-previewer/contexts/ThumbnailPreviewContext";
+import ThumbnailPreviewViews from "@/features/thumbnail-previewer/components/thumbnail-preview-views";
 
 export default function Page() {
-  const [imgPath, setImgPath] = useState("");
-  const [videoTitle, setVideoTitle] = useState("");
-  const [channelName, setChannelName] = useState("");
+  const { title, setTitle, thumbnail, setThumbnail, channel, setChannel } =
+    useContext(ThumbnailPreviewContext);
   const [errorMessage, setErrorMessage] = useState("");
   const previewRef = useRef<HTMLDivElement>(null);
 
@@ -28,19 +27,18 @@ export default function Page() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!imgPath) {
+    if (!thumbnail) {
       setErrorMessage("Please upload an image.");
       return;
     }
-    console.log(imgPath, videoTitle, channelName);
 
     previewRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   function handleReset() {
-    setImgPath("");
-    setVideoTitle("");
-    setChannelName("");
+    setThumbnail("");
+    setTitle("");
+    setChannel("");
     setErrorMessage("");
   }
 
@@ -54,8 +52,8 @@ export default function Page() {
           <div className="grid gap-4 lg:grid-cols-2">
             <UploadCard
               onUpload={handleUpload}
-              imgPath={imgPath}
-              setImgPath={setImgPath}
+              thumbnail={thumbnail}
+              setThumbnail={setThumbnail}
             />
             <form onSubmit={handleSubmit}>
               <FieldGroup>
@@ -66,8 +64,8 @@ export default function Page() {
                     autoComplete="off"
                     placeholder="e.g. The Ultimate YouTube Guide"
                     required
-                    value={videoTitle}
-                    onChange={(e) => setVideoTitle(e.target.value)}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </Field>
                 <Field>
@@ -77,8 +75,8 @@ export default function Page() {
                     autoComplete="off"
                     placeholder="e.g. PewDiePie"
                     required
-                    value={channelName}
-                    onChange={(e) => setChannelName(e.target.value)}
+                    value={channel}
+                    onChange={(e) => setChannel(e.target.value)}
                   />
                 </Field>
                 {errorMessage ? (
@@ -104,11 +102,7 @@ export default function Page() {
       </section>
       <section>
         <div className="wrapper-lg py-4 space-y-8" ref={previewRef}>
-          <ThumbnailPreviewOptions
-            imgPath={imgPath}
-            videoTitle={videoTitle}
-            channelName={channelName}
-          />
+          <ThumbnailPreviewViews />
         </div>
       </section>
     </>

@@ -10,11 +10,15 @@ import { AspectRatio } from "../ui/aspect-ratio";
 
 interface Props {
   onUpload: (file: File) => void;
-  imgPath: string;
-  setImgPath: Dispatch<SetStateAction<string>>;
+  thumbnail: string;
+  setThumbnail: Dispatch<SetStateAction<string>>;
 }
 
-export default function UploadCard({ onUpload, imgPath, setImgPath }: Props) {
+export default function UploadCard({
+  onUpload,
+  thumbnail,
+  setThumbnail,
+}: Props) {
   const [isHovered, setIsHovered] = useState(false);
 
   const onDrop = useCallback(
@@ -22,11 +26,11 @@ export default function UploadCard({ onUpload, imgPath, setImgPath }: Props) {
       const file = acceptedFiles[0];
       if (file) {
         const imgURL = URL.createObjectURL(file);
-        setImgPath(imgURL);
+        setThumbnail(imgURL);
         onUpload(file);
       }
     },
-    [setImgPath, onUpload]
+    [setThumbnail, onUpload]
   );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -38,17 +42,22 @@ export default function UploadCard({ onUpload, imgPath, setImgPath }: Props) {
     <Card
       {...getRootProps()}
       className={`max-w-md w-full mx-auto py-0 border-dashed border-2 aspect-video overflow-hidden justify-center items-center ${
-        (isDragActive || isHovered) && !imgPath
+        (isDragActive || isHovered) && !thumbnail
           ? "border-primary/50 bg-muted"
           : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {imgPath ? (
+      {thumbnail ? (
         <>
           <AspectRatio ratio={16 / 9} className="w-full h-full">
-            <Image src={imgPath} alt="Uploaded thumbnail" fill />
+            <Image
+              src={thumbnail}
+              alt="Uploaded thumbnail"
+              fill
+              className="object-cover"
+            />
           </AspectRatio>
         </>
       ) : (

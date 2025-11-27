@@ -8,6 +8,10 @@ interface Props {
 }
 
 export default function YouTubeVideoCard({ video }: Props) {
+  const { title, thumbnail, channel } = video;
+
+  if (!title || !thumbnail || !channel) return null;
+
   return (
     <article key={video.thumbnail}>
       <AspectRatio
