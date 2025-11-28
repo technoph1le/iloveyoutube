@@ -1,26 +1,20 @@
+import { HeartIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Logo() {
-  const props = {
-    width: 150,
-    height: 50,
-  };
-
   return (
-    <Link href="/">
-      <Image
-        src="/assets/logo-light.svg"
-        alt="Logo"
-        {...props}
-        className="dark:hidden"
+    <Link
+      href="/"
+      className="flex gap-1 items-center text-2xl font-bold animate-pulse-heart"
+    >
+      <span>I</span>
+      <HeartIcon
+        fill="var(--color-accent-foreground)"
+        color="var(--color-accent-foreground)"
+        className="transition-transform duration-300"
       />
-      <Image
-        src="/assets/logo-dark.svg"
-        alt="Logo"
-        {...props}
-        className="hidden dark:block"
-      />
+      <span>YOUTUBE</span>
     </Link>
   );
 }

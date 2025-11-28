@@ -1,15 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+export const DEFAULT_VIDEO_ID = "H8bQYBtF4bQ";
+export const DEFAULT_THUMBNAILS = getThumbnails(DEFAULT_VIDEO_ID);
 
-export async function GET(req: NextRequest) {
-  const searchParams = req.nextUrl.searchParams;
-  const videoId = searchParams.get("id");
-
-  if (!videoId)
-    return NextResponse.json({ error: "Missing video ID" }, { status: 400 });
-
+export function getThumbnails(videoId: string) {
   const BASE = `https://img.youtube.com/vi/${videoId}`;
 
-  const thumbnails = {
+  return {
     maxres: {
       width: 1280,
       height: 720,
@@ -41,6 +36,4 @@ export async function GET(req: NextRequest) {
       url: `${BASE}/default.jpg`,
     },
   };
-
-  return NextResponse.json(thumbnails);
 }

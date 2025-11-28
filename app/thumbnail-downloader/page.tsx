@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { toast } from "sonner";
 import { ArrowRightIcon, CircleXIcon } from "lucide-react";
 
 import { useThumbnailDownload } from "@/features/thumbnail-downloader/hooks/useThumbnailDownload";
@@ -11,7 +13,6 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { toast } from "sonner";
 
 export default function Page() {
   const {
@@ -19,10 +20,15 @@ export default function Page() {
     setVideoURL,
     thumbnails,
     error,
-    loading,
     handleClear,
     handleSubmit,
   } = useThumbnailDownload();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return (
     <section>
@@ -40,18 +46,20 @@ export default function Page() {
             />
             <InputGroupAddon align="inline-end">
               {videoURL && (
-                <InputGroupButton type="reset" onClick={handleClear}>
+                <InputGroupButton
+                  type="reset"
+                  onClick={handleClear}
+                  aria-label="Clear URL"
+                >
                   <CircleXIcon />
                 </InputGroupButton>
               )}
-              <InputGroupButton type="submit" disabled={loading}>
+              <InputGroupButton type="submit" aria-label="Download thumbnails">
                 <ArrowRightIcon />
               </InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
         </form>
-
-        {error && toast.error(`Error occured: ${error}`)}
 
         {thumbnails && <ThumbnailDownloadPreview thumbnails={thumbnails} />}
       </div>

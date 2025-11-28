@@ -37,10 +37,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster />
           <Header />
           <main>{children}</main>
           <Footer />
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>
