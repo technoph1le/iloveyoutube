@@ -1,3 +1,5 @@
+"use client";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,13 +7,11 @@ import { cn } from "@/lib/utils";
 import { DownloadIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ThumbnailDownloadVariants } from "../types";
+import { useThumbnailDownloadProps } from "../hooks/useThumbnailDownload";
 
-interface Props {
-  thumbnails: ThumbnailDownloadVariants;
-}
-
-export default function ThumbnailDownloadPreview({ thumbnails }: Props) {
+export default function ThumbnailDownloadPreview({
+  thumbnails,
+}: useThumbnailDownloadProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {Object.entries(thumbnails).map(([key, thumbnail], index) => (
@@ -23,7 +23,13 @@ export default function ThumbnailDownloadPreview({ thumbnails }: Props) {
           )}
         >
           <AspectRatio ratio={16 / 9}>
-            <Image src={thumbnail.url} alt="" fill className="object-cover" />
+            <Image
+              key={thumbnail.url}
+              src={thumbnail.url}
+              alt=""
+              fill
+              className="object-cover"
+            />
           </AspectRatio>
           <CardContent className="flex items-center gap-4 justify-between">
             <p className="font-bold">{thumbnail.label}</p>

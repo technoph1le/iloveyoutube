@@ -34,12 +34,12 @@ export default function UploadCard({ img, setImg }: Props) {
     multiple: false,
   });
 
-  const handleClear = useCallback(() => {
+  const handleClear = () => {
     if (img) {
       URL.revokeObjectURL(img);
     }
     setImg("");
-  }, [img]);
+  };
 
   return (
     <Card

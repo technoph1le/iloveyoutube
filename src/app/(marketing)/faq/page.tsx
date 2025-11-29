@@ -18,7 +18,7 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>FAQ</SectionTitle>
           <SectionSubtitle>
-            If you've further questions, reach me out through Discord.
+            If you&apos;ve further questions, reach me out through Discord.
           </SectionSubtitle>
         </SectionHeader>
         <Accordion

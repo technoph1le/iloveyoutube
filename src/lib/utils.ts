@@ -21,6 +21,26 @@ export function slugify(string: string, separator = "-") {
     .replace(/\-$/g, ""); // Remove trailing -
 }
 
+export function throttle<T extends any[]>(
+  func: (...args: T) => void,
+  delay: number
+): (...args: T) => void {
+  let lastCall = 0;
+
+  // This is the function that replaces the original function
+  return function (this: any, ...args: T) {
+    const now = Date.now();
+
+    // Check if the required delay has passed since the last execution
+    if (now - lastCall >= delay) {
+      // If the delay has passed, update the lastCall time and execute the function
+      lastCall = now;
+      func.apply(this, args);
+    }
+    // If the delay has NOT passed, the function call is simply ignored.
+  };
+}
+
 /**
  * Extracts YouTube video ID from the video URL.
  * @example
@@ -52,7 +72,11 @@ export function extractYouTubeId(videoURL: string) {
 
     return null;
   } catch {
-    // plain ID already
-    return videoURL;
+    // plain id that's 11 characters long
+    if (videoURL.length === 11) {
+      return videoURL;
+    }
+
+    return null;
   }
 }
