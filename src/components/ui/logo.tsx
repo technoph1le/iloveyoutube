@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      className="flex gap-1 items-center text-2xl font-bold animate-pulse-heart"
+      className="flex gap-1 items-center text-2xl font-mono font-bold animate-pulse-heart"
     >
       <span>I</span>
       <HeartIcon

@@ -3,7 +3,7 @@ export const FAQ_ITEMS = [
     id: "1",
     title: "What is iLoveYouTube?",
     content:
-      "It’s a collection of simple FEATURES that make YouTube creators’ lives easier — thumbnail previewing, thumbnail downloading, metadata checking, video utilities, and more.",
+      "It’s a collection of simple tools that make YouTube creators’ lives easier — thumbnail previewing, thumbnail downloading, metadata checking, video utilities, and more.",
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ export const FAQ_ITEMS = [
   },
   {
     id: "4",
-    title: "Do I need an account to use the FEATURES?",
+    title: "Do I need an account to use the tools?",
     content: "No. Everything works without logging in.",
   },
   {
@@ -30,7 +30,7 @@ export const FAQ_ITEMS = [
     id: "6",
     title: "Is the service free to use?",
     content:
-      "Core FEATURES will stay free forever. However, you can still buy the creator a coffee xD.",
+      "Core tools will stay free forever. However, you can still buy the creator a coffee xD.",
   },
   {
     id: "7",

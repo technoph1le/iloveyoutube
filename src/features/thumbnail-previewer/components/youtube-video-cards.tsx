@@ -2,7 +2,7 @@ import YouTubeVideoCard from "./youtube-video-card";
 import { useContext } from "react";
 import { VideoCardType } from "../types";
 import { ThumbnailPreviewContext } from "../contexts/ThumbnailPreviewContext";
-import useFetch from "@/hooks/useFetch";
+import useFetch from "@/hooks/use-fetch";
 import { toast } from "sonner";
 import { Spinner } from "@/components/ui/spinner";
 
