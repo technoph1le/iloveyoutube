@@ -1,0 +1,76 @@
+"use client";
+
+import { useContext } from "react";
+import { ArrowRightIcon, RotateCcwIcon, TriangleAlertIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import UploadCard from "@/components/widgets/upload-card";
+
+import { ThumbnailPreviewContext } from "../contexts/ThumbnailPreviewContext";
+
+export default function ThumbnailPreviewForm() {
+  const {
+    title,
+    setTitle,
+    thumbnail,
+    setThumbnail,
+    channel,
+    setChannel,
+    error,
+    handleSubmit,
+    handleReset,
+  } = useContext(ThumbnailPreviewContext);
+
+  return (
+    <form onSubmit={handleSubmit} className="grid gap-4 lg:grid-cols-2">
+      <UploadCard img={thumbnail} setImg={setThumbnail} />
+      <FieldGroup>
+        <Field>
+          <FieldLabel htmlFor="video-title">Video title</FieldLabel>
+          <Input
+            id="video-title"
+            autoComplete="off"
+            placeholder="e.g. The Ultimate YouTube Guide"
+            required
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="channel-name">Channel Name</FieldLabel>
+          <Input
+            id="channel-name"
+            autoComplete="off"
+            placeholder="e.g. PewDiePie"
+            required
+            value={channel}
+            onChange={(e) => setChannel(e.target.value)}
+          />
+        </Field>
+        {error ? (
+          <FieldDescription className="text-destructive flex gap-2 items-center">
+            <TriangleAlertIcon size={20} />
+            <span>{error}</span>
+          </FieldDescription>
+        ) : null}
+        <Field orientation="horizontal">
+          <Button type="reset" variant="outline" onClick={handleReset}>
+            <RotateCcwIcon />
+            <span>Reset</span>
+          </Button>
+          <Button type="submit">
+            <span>Preview</span>
+            <ArrowRightIcon />
+          </Button>
+        </Field>
+      </FieldGroup>
+    </form>
+  );
+}

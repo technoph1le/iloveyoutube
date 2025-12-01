@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { capitalize } from "@/lib/utils";
 import { useContext } from "react";
-import { THUMBNAIL_PREVIEW_CATEGORIES } from "../data";
+import { THUMBNAIL_PREVIEW_CATEGORIES } from "../data/thumbnail-preview-categories";
 import { ThumbnailPreviewContext } from "../contexts/ThumbnailPreviewContext";
 
 export default function YouTubeTags() {

@@ -5,7 +5,7 @@ import { FEATURES } from "@/data/features";
 
 export default function Features() {
   return (
-    <ul className="grid gap-4 md:grid-cols-4">
+    <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {Object.entries(FEATURES).map(([key, { icon: Icon, ...feature }]) => (
         <li key={key}>
           <Link href={feature.link}>

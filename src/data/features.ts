@@ -8,6 +8,10 @@ import {
   MusicIcon,
   ListOrderedIcon,
   PanelsTopLeftIcon,
+  FileTextIcon,
+  Code2Icon,
+  MessageSquareIcon,
+  GalleryVerticalIcon,
 } from "lucide-react";
 
 export const FEATURES: FeatureItems = {
@@ -60,5 +64,32 @@ export const FEATURES: FeatureItems = {
     title: "Video Screenshot Tool",
     description: "Extract crisp frames from any YouTube video.",
     link: "/video-screenshot",
+  },
+  youtubeTranscript: {
+    icon: FileTextIcon,
+    title: "YouTube to Transcript",
+    description: "Get clean, ready-to-copy transcripts from any YouTube video.",
+    link: "/youtube-transcript",
+  },
+  embedPreview: {
+    icon: Code2Icon,
+    title: "YouTube Embed Preview",
+    description:
+      "Preview how your video looks when embedded — copy the code in one click.",
+    link: "/youtube-embed-preview",
+  },
+  commentExtractor: {
+    icon: MessageSquareIcon,
+    title: "Comment Screenshot Tool",
+    description:
+      "Grab real YouTube comments and export clean snapshots for thumbnails.",
+    link: "/comment-extractor",
+  },
+  crossPostPreview: {
+    icon: GalleryVerticalIcon,
+    title: "Cross-Platform Post Preview",
+    description:
+      "Preview how your thumbnails look across Instagram, X, TikTok, and more.",
+    link: "/cross-post-preview",
   },
 };

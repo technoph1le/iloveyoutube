@@ -3,12 +3,15 @@
 import {
   createContext,
   Dispatch,
+  FormEvent,
   ReactNode,
+  RefObject,
   SetStateAction,
+  useRef,
   useState,
 } from "react";
 import type { VideoCardType } from "../types";
-import { THUMBNAIL_PREVIEW_CATEGORIES } from "../data";
+import { THUMBNAIL_PREVIEW_CATEGORIES } from "../data/thumbnail-preview-categories";
 
 const defaultValue: ContextType = {
   title: "",
@@ -19,6 +22,10 @@ const defaultValue: ContextType = {
   setChannel: () => {},
   category: "all",
   setCategory: () => {},
+  error: "",
+  previewRef: { current: null },
+  handleSubmit: () => {},
+  handleReset: () => {},
 };
 
 interface ContextType {
@@ -30,6 +37,10 @@ interface ContextType {
   setChannel: Dispatch<SetStateAction<string>>;
   category: keyof typeof THUMBNAIL_PREVIEW_CATEGORIES;
   setCategory: Dispatch<SetStateAction<ContextType["category"]>>;
+  error: string;
+  previewRef: RefObject<HTMLDivElement | null>;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleReset: () => void;
 }
 
 export const ThumbnailPreviewContext = createContext<ContextType>(defaultValue);
@@ -43,6 +54,25 @@ export const ThumbnailPreviewProvider = ({
   const [thumbnail, setThumbnail] = useState("");
   const [channel, setChannel] = useState("");
   const [category, setCategory] = useState<ContextType["category"]>("all");
+  const [error, setError] = useState("");
+  const previewRef = useRef<HTMLDivElement>(null);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!thumbnail) {
+      setError("Please upload an image.");
+      return;
+    }
+
+    previewRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function handleReset() {
+    setThumbnail("");
+    setTitle("");
+    setChannel("");
+    setError("");
+  }
 
   return (
     <ThumbnailPreviewContext.Provider
@@ -55,6 +85,10 @@ export const ThumbnailPreviewProvider = ({
         setChannel,
         category,
         setCategory,
+        error,
+        handleSubmit,
+        handleReset,
+        previewRef,
       }}
     >
       {children}

@@ -16,6 +16,10 @@ export type FeatureItemKey =
   | "safeZoneOverlay"
   | "chaptersGenerator"
   | "titleFormatter"
-  | "videoScreenshot";
+  | "videoScreenshot"
+  | "youtubeTranscript"
+  | "embedPreview"
+  | "commentExtractor"
+  | "crossPostPreview";
 
 export type FeatureItems = Record<FeatureItemKey, FeatureItem>;

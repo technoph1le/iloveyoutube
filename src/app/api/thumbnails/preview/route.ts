@@ -1,4 +1,4 @@
-import { THUMBNAIL_PREVIEW_CATEGORIES } from "@/features/thumbnail-previewer/data";
+import { THUMBNAIL_PREVIEW_CATEGORIES } from "@/features/thumbnail-previewer/data/thumbnail-preview-categories";
 import { OEmbedResponse } from "@/features/thumbnail-previewer/types";
 import { NextRequest, NextResponse } from "next/server";
 

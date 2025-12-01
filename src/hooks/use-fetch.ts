@@ -27,6 +27,10 @@ export default function useFetch<T = null>(url: string) {
         const data = await res.json();
         setData(data);
       } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") {
+          return;
+        }
+
         if (err instanceof Error) {
           setError(err.message);
         } else {

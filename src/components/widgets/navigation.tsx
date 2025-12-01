@@ -89,7 +89,7 @@ export default function Navigation() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:grid-cols-3 lg:w-[800px]">
                   {Object.entries(FEATURES).map(([key, feature]) => (
                     <ListItem
                       key={key}

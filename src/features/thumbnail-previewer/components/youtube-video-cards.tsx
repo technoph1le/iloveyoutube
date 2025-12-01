@@ -6,7 +6,13 @@ import useFetch from "@/hooks/use-fetch";
 import { toast } from "sonner";
 import { Spinner } from "@/components/ui/spinner";
 
-export default function YouTubeVideoCards() {
+interface YouTubeVideoCardsProps {
+  orientation?: "horizontal" | "vertical";
+}
+
+export default function YouTubeVideoCards({
+  orientation = "vertical",
+}: YouTubeVideoCardsProps) {
   const { title, channel, thumbnail, category } = useContext(
     ThumbnailPreviewContext
   );
@@ -18,14 +24,25 @@ export default function YouTubeVideoCards() {
   } = useFetch<VideoCardType[]>(`/api/thumbnails/preview?category=${category}`);
 
   if (loading) return <Spinner />;
+  if (error) {
+    toast.error(error);
+    return null;
+  }
+
   if (!videos) return null;
-  if (error) return toast.error(error);
 
   return (
     <>
-      <YouTubeVideoCard video={{ title, thumbnail, channel }} />
+      <YouTubeVideoCard
+        video={{ title, thumbnail, channel }}
+        orientation={orientation}
+      />
       {videos.map((video) => (
-        <YouTubeVideoCard key={video.thumbnail} video={video} />
+        <YouTubeVideoCard
+          key={video.thumbnail}
+          video={video}
+          orientation={orientation}
+        />
       ))}
     </>
   );

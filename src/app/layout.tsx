@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Roboto_Slab } from "next/font/google";
+import { Source_Sans_3, Roboto_Slab, Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Header from "@/components/layouts/header";
@@ -19,6 +19,12 @@ const robotoSlab = Roboto_Slab({
   variable: "--font-mono",
 });
 
+const roboto = Roboto({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-youtube",
+});
+
 export const metadata: Metadata = {
   title: "iLoveYouTube",
   description: "All the free tools you need for YouTube",
@@ -32,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${sourceSans3.variable} ${robotoSlab.variable} antialiased`}
+        className={`${sourceSans3.variable} ${robotoSlab.variable} ${roboto.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
