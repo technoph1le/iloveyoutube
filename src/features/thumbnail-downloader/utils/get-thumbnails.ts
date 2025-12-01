@@ -1,5 +1,4 @@
-export const DEFAULT_VIDEO_ID = "H8bQYBtF4bQ";
-export const DEFAULT_THUMBNAILS = getThumbnails(DEFAULT_VIDEO_ID);
+import { DEFAULT_SAMPLE_VIDEO_ID } from "@/lib/constants";
 
 export function getThumbnails(videoId: string) {
   const BASE = `https://img.youtube.com/vi/${videoId}`;
@@ -37,3 +36,5 @@ export function getThumbnails(videoId: string) {
     },
   };
 }
+
+export const DEFAULT_THUMBNAILS = getThumbnails(DEFAULT_SAMPLE_VIDEO_ID);

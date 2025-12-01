@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { YOUTUBE_VIDEO_ID_LENGTH } from "./constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -73,7 +74,7 @@ export function extractYouTubeId(videoURL: string) {
     return null;
   } catch {
     // plain id that's 11 characters long
-    if (videoURL.length === 11) {
+    if (videoURL.length === YOUTUBE_VIDEO_ID_LENGTH) {
       return videoURL;
     }
 

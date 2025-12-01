@@ -15,7 +15,6 @@ import { toast } from "sonner";
 export default function ThumbnailDownloadInput({
   videoURL,
   setVideoURL,
-  isLoading,
   error,
   handleClear,
   handleSubmit,
@@ -45,11 +44,7 @@ export default function ThumbnailDownloadInput({
               <CircleXIcon />
             </InputGroupButton>
           )}
-          <InputGroupButton
-            type="submit"
-            disabled={isLoading}
-            aria-label="Download thumbnails"
-          >
+          <InputGroupButton type="submit" aria-label="Download thumbnails">
             <ArrowRightIcon />
           </InputGroupButton>
         </InputGroupAddon>

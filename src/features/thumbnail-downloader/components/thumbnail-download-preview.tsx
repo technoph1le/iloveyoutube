@@ -11,6 +11,7 @@ import { useThumbnailDownloadProps } from "../hooks/useThumbnailDownload";
 
 export default function ThumbnailDownloadPreview({
   thumbnails,
+  handleDownload,
 }: useThumbnailDownloadProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
@@ -33,7 +34,7 @@ export default function ThumbnailDownloadPreview({
           </AspectRatio>
           <CardContent className="flex items-center gap-4 justify-between">
             <p className="font-bold">{thumbnail.label}</p>
-            <Button asChild>
+            <Button onClick={handleDownload} asChild>
               <Link
                 download={`${thumbnail.label}.jpg`}
                 href={thumbnail.url}
