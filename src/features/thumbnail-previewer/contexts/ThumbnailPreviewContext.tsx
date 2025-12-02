@@ -1,19 +1,9 @@
 "use client";
 
-import {
-  createContext,
-  Dispatch,
-  FormEvent,
-  ReactNode,
-  RefObject,
-  SetStateAction,
-  useRef,
-  useState,
-} from "react";
-import type { VideoCardType } from "../types";
-import { THUMBNAIL_PREVIEW_CATEGORIES } from "../data/thumbnail-preview-categories";
+import { createContext, FormEvent, ReactNode, useRef, useState } from "react";
+import { ThumbnailPreviewContextType } from "../types";
 
-const defaultValue: ContextType = {
+const defaultValue: ThumbnailPreviewContextType = {
   title: "",
   setTitle: () => {},
   thumbnail: "",
@@ -28,22 +18,8 @@ const defaultValue: ContextType = {
   handleReset: () => {},
 };
 
-interface ContextType {
-  title: VideoCardType["title"];
-  setTitle: Dispatch<SetStateAction<string>>;
-  thumbnail: VideoCardType["thumbnail"];
-  setThumbnail: Dispatch<SetStateAction<string>>;
-  channel: VideoCardType["channel"];
-  setChannel: Dispatch<SetStateAction<string>>;
-  category: keyof typeof THUMBNAIL_PREVIEW_CATEGORIES;
-  setCategory: Dispatch<SetStateAction<ContextType["category"]>>;
-  error: string;
-  previewRef: RefObject<HTMLDivElement | null>;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  handleReset: () => void;
-}
-
-export const ThumbnailPreviewContext = createContext<ContextType>(defaultValue);
+export const ThumbnailPreviewContext =
+  createContext<ThumbnailPreviewContextType>(defaultValue);
 
 export const ThumbnailPreviewProvider = ({
   children,
@@ -53,7 +29,8 @@ export const ThumbnailPreviewProvider = ({
   const [title, setTitle] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [channel, setChannel] = useState("");
-  const [category, setCategory] = useState<ContextType["category"]>("all");
+  const [category, setCategory] =
+    useState<ThumbnailPreviewContextType["category"]>("all");
   const [error, setError] = useState("");
   const previewRef = useRef<HTMLDivElement>(null);
 

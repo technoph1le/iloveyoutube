@@ -1,3 +1,6 @@
+import { THUMBNAIL_PREVIEW_CATEGORIES } from "@/features/thumbnail-previewer/data/thumbnail-preview-categories";
+import { Dispatch, FormEvent, RefObject, SetStateAction } from "react";
+
 export type VideoCardType = {
   title: string;
   channel: string;
@@ -17,4 +20,21 @@ export interface YouTubeVideoCardProps {
   withoutChannel?: boolean;
   withoutDescription?: boolean;
   withoutTags?: boolean;
+}
+
+export interface ThumbnailPreviewContextType {
+  title: VideoCardType["title"];
+  setTitle: Dispatch<SetStateAction<string>>;
+  thumbnail: VideoCardType["thumbnail"];
+  setThumbnail: Dispatch<SetStateAction<string>>;
+  channel: VideoCardType["channel"];
+  setChannel: Dispatch<SetStateAction<string>>;
+  category: keyof typeof THUMBNAIL_PREVIEW_CATEGORIES;
+  setCategory: Dispatch<
+    SetStateAction<ThumbnailPreviewContextType["category"]>
+  >;
+  error: string;
+  previewRef: RefObject<HTMLDivElement | null>;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleReset: () => void;
 }
