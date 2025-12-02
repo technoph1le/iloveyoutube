@@ -1,11 +1,11 @@
-import { BellIcon, MicIcon, PlusIcon, SearchIcon } from "lucide-react";
+import { BellIcon, MicIcon, PlusIcon, SearchIcon, Tv2Icon } from "lucide-react";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { YouTubeLogo } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export default function YouTubeHeader() {
+export function YouTubeDesktopHeader() {
   return (
     <header className="flex gap-4 justify-between items-center">
       <YouTubeLogo />
@@ -36,6 +36,25 @@ export default function YouTubeHeader() {
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
+      </div>
+    </header>
+  );
+}
+
+export function YouTubeMobileHeader() {
+  return (
+    <header className="flex gap-4 justify-between items-center">
+      <YouTubeLogo />
+      <div className="flex gap-2 items-center">
+        <Button variant="ghost" size="icon">
+          <Tv2Icon />
+        </Button>
+        <Button variant="ghost" size="icon">
+          <BellIcon />
+        </Button>
+        <Button variant="ghost" size="icon">
+          <SearchIcon />
+        </Button>
       </div>
     </header>
   );

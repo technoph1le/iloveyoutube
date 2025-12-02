@@ -25,6 +25,11 @@ export const THUMBNAIL_PREVIEW_OPTIONS = {
     icon: SearchIcon,
     content: DesktopSearch,
   },
+  desktopSidebar: {
+    label: "Desktop Sidebar",
+    icon: LayoutPanelLeftIcon,
+    content: DesktopSidebar,
+  },
   mobileFeed: {
     label: "Mobile Feed",
     icon: SmartphoneIcon,
@@ -34,10 +39,5 @@ export const THUMBNAIL_PREVIEW_OPTIONS = {
     label: "Channel Page",
     icon: UserSquareIcon,
     content: ChannelPage,
-  },
-  desktopSidebar: {
-    label: "Desktop Sidebar",
-    icon: LayoutPanelLeftIcon,
-    content: DesktopSidebar,
   },
 };

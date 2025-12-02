@@ -9,3 +9,12 @@ export type OEmbedResponse = {
   author_name: string;
   thumbnail_url: string;
 };
+
+export interface YouTubeVideoCardProps {
+  orientation?: "horizontal" | "vertical";
+  variant?: "mobile" | "desktop";
+  withoutAvatar?: boolean;
+  withoutChannel?: boolean;
+  withoutDescription?: boolean;
+  withoutTags?: boolean;
+}

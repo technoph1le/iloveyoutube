@@ -1,18 +1,19 @@
 import YouTubeVideoCard from "./youtube-video-card";
 import { useContext } from "react";
-import { VideoCardType } from "../types";
+import { VideoCardType, YouTubeVideoCardProps } from "../types";
 import { ThumbnailPreviewContext } from "../contexts/ThumbnailPreviewContext";
 import useFetch from "@/hooks/use-fetch";
 import { toast } from "sonner";
 import { Spinner } from "@/components/ui/spinner";
 
-interface YouTubeVideoCardsProps {
-  orientation?: "horizontal" | "vertical";
-}
-
 export default function YouTubeVideoCards({
   orientation = "vertical",
-}: YouTubeVideoCardsProps) {
+  variant = "desktop",
+  withoutAvatar = false,
+  withoutChannel = false,
+  withoutDescription = false,
+  withoutTags = false,
+}: YouTubeVideoCardProps) {
   const { title, channel, thumbnail, category } = useContext(
     ThumbnailPreviewContext
   );
@@ -36,12 +37,22 @@ export default function YouTubeVideoCards({
       <YouTubeVideoCard
         video={{ title, thumbnail, channel }}
         orientation={orientation}
+        variant={variant}
+        withoutAvatar={withoutAvatar}
+        withoutChannel={withoutChannel}
+        withoutDescription={withoutDescription}
+        withoutTags={withoutTags}
       />
       {videos.map((video) => (
         <YouTubeVideoCard
           key={video.thumbnail}
           video={video}
           orientation={orientation}
+          variant={variant}
+          withoutAvatar={withoutAvatar}
+          withoutChannel={withoutChannel}
+          withoutDescription={withoutDescription}
+          withoutTags={withoutTags}
         />
       ))}
     </>

@@ -51,3 +51,5 @@ export default function ThumbnailPreviewOptions() {
 const MemoizedContent = memo(({ children }: { children: ReactNode }) => (
   <>{children}</>
 ));
+
+MemoizedContent.displayName = "MemoizedContent";

@@ -22,6 +22,7 @@ export function slugify(string: string, separator = "-") {
     .replace(/\-$/g, ""); // Remove trailing -
 }
 
+// eslint-disable-next-line
 export function throttle<T extends any[]>(
   func: (...args: T) => void,
   delay: number
@@ -29,6 +30,7 @@ export function throttle<T extends any[]>(
   let lastCall = 0;
 
   // This is the function that replaces the original function
+  // eslint-disable-next-line
   return function (this: any, ...args: T) {
     const now = Date.now();
 
