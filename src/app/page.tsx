@@ -22,8 +22,8 @@ export default function Home() {
               place
             </SectionTitle>
             <SectionSubtitle className="text-sm md:text-lg text-secondary-foreground">
-              All your favorite YouTube tools in one place — 100% FREE and easy
-              to use! Convert videos to MP3/MP4, download thumbnails, generate
+              All your favorite YouTube tools in one place — free and easy to
+              use! Convert videos to MP3/MP4, download thumbnails, generate
               chapters, and format titles with just a few clicks.
             </SectionSubtitle>
           </SectionHeader>

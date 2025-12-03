@@ -6,7 +6,7 @@ import Logo from "@/components/ui/logo";
 export default function Header() {
   return (
     <header className="border-b">
-      <div className="wrapper-lg py-6 flex justify-between items-center gap-4">
+      <div className="wrapper-lg py-4 flex justify-between items-center gap-4">
         <Logo />
 
         <Navigation />

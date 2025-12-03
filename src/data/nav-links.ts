@@ -11,4 +11,8 @@ export const NAV_LINKS = [
     label: "Sponsor",
     url: "/sponsor",
   },
+  {
+    label: "Pricing",
+    url: "/pricing",
+  },
 ];

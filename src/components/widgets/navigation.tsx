@@ -1,12 +1,13 @@
 "use client";
 
-import { ComponentType, useState } from "react";
-import { LucideProps, MenuIcon, XIcon } from "lucide-react";
+import { useState } from "react";
+import { LogInIcon, MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
+import { Authenticated, Unauthenticated } from "convex/react";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 
 import useIsMobile from "@/hooks/use-mobile";
 
-import { FEATURES } from "@/data/features";
 import { SOCIAL_LINKS } from "@/data/social-links";
 import { NAV_LINKS } from "@/data/nav-links";
 
@@ -14,11 +15,9 @@ import { ThemeToggle } from "@/components/widgets/theme-toggle";
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import {
   DropdownMenu,
@@ -76,7 +75,7 @@ export default function Navigation() {
           </DropdownMenu>
         </>
       ) : (
-        <NavigationMenu viewport={isMobile} className="z-50">
+        <NavigationMenu viewport={isMobile} className="z-30">
           <NavigationMenuList className="flex-wrap gap-4">
             {NAV_LINKS.map((item) => (
               <NavigationMenuItem key={item.label}>
@@ -87,68 +86,27 @@ export default function Navigation() {
             ))}
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:grid-cols-3 lg:w-[800px]">
-                  {Object.entries(FEATURES).map(([key, feature]) => (
-                    <ListItem
-                      key={key}
-                      title={feature.title}
-                      href={feature.link}
-                      icon={feature.icon}
-                    >
-                      {feature.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
               <ThemeToggle />
             </NavigationMenuItem>
 
-            {SOCIAL_LINKS.map(({ label, url, icon: Icon }) => (
-              <NavigationMenuItem key={label}>
-                <NavigationMenuLink asChild>
-                  <Link href={url} target="_blank" rel="noopener noreferrer">
-                    <Icon className="size-5" />
-                    <span className="sr-only">{label}</span>
-                  </Link>
+            <NavigationMenuItem>
+              <Authenticated>
+                <NavigationMenuLink>
+                  <UserButton />
                 </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
+              </Authenticated>
+              <Unauthenticated>
+                <SignInButton>
+                  <Button>
+                    <LogInIcon />
+                    Sign in
+                  </Button>
+                </SignInButton>
+              </Unauthenticated>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       )}
     </>
-  );
-}
-
-function ListItem({
-  title,
-  children,
-  href,
-  icon: Icon,
-  ...props
-}: React.ComponentPropsWithoutRef<"li"> & {
-  href: string;
-  icon: ComponentType<LucideProps>;
-}) {
-  return (
-    <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="grid gap-4 grid-cols-[auto_1fr]">
-            <Icon className="size-6" />
-            <div className="space-y-2">
-              <h3 className="text-base leading-none font-semibold">{title}</h3>
-              <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-                {children}
-              </p>
-            </div>
-          </div>
-        </Link>
-      </NavigationMenuLink>
-    </li>
   );
 }
