@@ -6,13 +6,11 @@ import {
   UserSquareIcon,
 } from "lucide-react";
 
-import {
-  ChannelPage,
-  DesktopHome,
-  DesktopSearch,
-  DesktopSidebar,
-  MobileFeed,
-} from "../components/thumbnail-preview-content";
+import DesktopHome from "../components/previews/_desktop-home";
+import DesktopSearch from "../components/previews/_desktop-search";
+import MobileFeed from "../components/previews/_mobile-feed";
+import ChannelPage from "../components/previews/_channel-page";
+import DesktopSidebar from "../components/previews/_desktop-sidebar";
 
 export const THUMBNAIL_PREVIEW_OPTIONS = {
   desktopHome: {

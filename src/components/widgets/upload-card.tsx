@@ -73,7 +73,7 @@ export default function UploadCard({ img, setImg }: Props) {
         </>
       ) : (
         <CardContent className="text-center h-full self-stretch py-6 grid place-content-center gap-2">
-          <input {...getInputProps()} />
+          <input name="image" {...getInputProps()} />
 
           <ImageUpIcon size={32} className="mx-auto" />
 

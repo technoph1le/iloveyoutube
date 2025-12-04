@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import { FEATURES } from "@/data/features";
 
-import { ThumbnailPreviewContext } from "@/features/thumbnail-previewer/contexts/ThumbnailPreviewContext";
+import { ThumbnailPreviewFormContext } from "@/features/thumbnail-previewer/contexts/thumbnail-preview-form-context";
 import ThumbnailPreviewOptions from "@/features/thumbnail-previewer/components/thumbnail-preview-options";
 import ThumbnailPreviewForm from "@/features/thumbnail-previewer/components/thumbnail-preview-form";
 
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/section";
 
 export default function Page() {
-  const { previewRef } = useContext(ThumbnailPreviewContext);
+  const { previewRef } = useContext(ThumbnailPreviewFormContext);
   const sectionInfo = FEATURES["thumbnailPreviewer"];
 
   return (

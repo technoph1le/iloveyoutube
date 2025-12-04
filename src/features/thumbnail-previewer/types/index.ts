@@ -22,7 +22,7 @@ export interface YouTubeVideoCardProps {
   withoutTags?: boolean;
 }
 
-export interface ThumbnailPreviewContextType {
+export interface ThumbnailPreviewFormContextType {
   title: VideoCardType["title"];
   setTitle: Dispatch<SetStateAction<string>>;
   thumbnail: VideoCardType["thumbnail"];
@@ -31,10 +31,17 @@ export interface ThumbnailPreviewContextType {
   setChannel: Dispatch<SetStateAction<string>>;
   category: keyof typeof THUMBNAIL_PREVIEW_CATEGORIES;
   setCategory: Dispatch<
-    SetStateAction<ThumbnailPreviewContextType["category"]>
+    SetStateAction<ThumbnailPreviewFormContextType["category"]>
   >;
+  userVideo: VideoCardType | null;
   error: string;
-  previewRef: RefObject<HTMLDivElement | null>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   handleReset: () => void;
+  previewRef: RefObject<HTMLDivElement | null>;
+}
+
+export interface ThumbnailPreviewDataContextType {
+  videos: VideoCardType[];
+  setVideos: Dispatch<SetStateAction<VideoCardType[]>>;
+  handleShuffle: () => void;
 }

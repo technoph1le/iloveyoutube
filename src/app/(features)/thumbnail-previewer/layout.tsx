@@ -1,9 +1,14 @@
-import { ThumbnailPreviewProvider } from "@/features/thumbnail-previewer/contexts/ThumbnailPreviewContext";
+import { ThumbnailPreviewDataProvider } from "@/features/thumbnail-previewer/contexts/thumbnail-preview-data-context";
+import { ThumbnailPreviewFormProvider } from "@/features/thumbnail-previewer/contexts/thumbnail-preview-form-context";
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <ThumbnailPreviewProvider>{children}</ThumbnailPreviewProvider>;
+  return (
+    <ThumbnailPreviewDataProvider>
+      <ThumbnailPreviewFormProvider>{children}</ThumbnailPreviewFormProvider>;
+    </ThumbnailPreviewDataProvider>
+  );
 }

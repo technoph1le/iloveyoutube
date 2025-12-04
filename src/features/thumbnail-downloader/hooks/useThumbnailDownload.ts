@@ -12,7 +12,7 @@ import {
 import { DEFAULT_THUMBNAILS, getThumbnails } from "../utils/get-thumbnails";
 import { extractYouTubeId, throttle } from "@/lib/utils";
 import { useMutation } from "convex/react";
-import { api } from "../../../../convex/_generated/api";
+import { api } from "@/convex/api";
 
 export interface useThumbnailDownloadProps {
   videoURL: string;

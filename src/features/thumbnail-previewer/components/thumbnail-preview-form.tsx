@@ -13,20 +13,20 @@ import {
 import { Input } from "@/components/ui/input";
 import UploadCard from "@/components/widgets/upload-card";
 
-import { ThumbnailPreviewContext } from "../contexts/ThumbnailPreviewContext";
+import { ThumbnailPreviewFormContext } from "../contexts/thumbnail-preview-form-context";
 
 export default function ThumbnailPreviewForm() {
   const {
     title,
     setTitle,
-    thumbnail,
-    setThumbnail,
     channel,
     setChannel,
+    thumbnail,
+    setThumbnail,
     error,
     handleSubmit,
     handleReset,
-  } = useContext(ThumbnailPreviewContext);
+  } = useContext(ThumbnailPreviewFormContext);
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4 lg:grid-cols-2">
@@ -38,6 +38,7 @@ export default function ThumbnailPreviewForm() {
             id="video-title"
             autoComplete="off"
             placeholder="e.g. The Ultimate YouTube Guide"
+            name="title"
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -49,6 +50,7 @@ export default function ThumbnailPreviewForm() {
             id="channel-name"
             autoComplete="off"
             placeholder="e.g. PewDiePie"
+            name="channel"
             required
             value={channel}
             onChange={(e) => setChannel(e.target.value)}

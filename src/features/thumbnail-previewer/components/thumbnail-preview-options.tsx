@@ -5,11 +5,36 @@ import { MonitorIcon, ShuffleIcon } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { THUMBNAIL_PREVIEW_OPTIONS } from "../data/thumbnail-preview-options";
-import { memo, ReactNode } from "react";
+import { memo, ReactNode, useContext, useEffect } from "react";
 import useIsMobile from "@/hooks/use-mobile";
+import useFetch from "@/hooks/use-fetch";
+import { VideoCardType } from "../types";
+import { Spinner } from "@/components/ui/spinner";
+import { toast } from "sonner";
+import { ThumbnailPreviewFormContext } from "../contexts/thumbnail-preview-form-context";
+import { ThumbnailPreviewDataContext } from "../contexts/thumbnail-preview-data-context";
 
 export default function ThumbnailPreviewOptions() {
   const isMobile = useIsMobile();
+
+  const { setVideos, handleShuffle } = useContext(ThumbnailPreviewDataContext);
+  const { category, userVideo } = useContext(ThumbnailPreviewFormContext);
+
+  const { data, loading, error } = useFetch<VideoCardType[]>(
+    `/api/thumbnails/preview?category=${category}`
+  );
+
+  useEffect(() => {
+    if (data) {
+      setVideos(userVideo ? [userVideo, ...data] : data);
+    }
+  }, [data, setVideos, userVideo]);
+
+  if (loading) return <Spinner />;
+  if (error) {
+    toast.error(error);
+    return null;
+  }
 
   return (
     <Tabs defaultValue="desktopHome" className="w-full">
@@ -24,7 +49,7 @@ export default function ThumbnailPreviewOptions() {
             )
           )}
         </TabsList>
-        <Button variant="outline" size="lg">
+        <Button onClick={handleShuffle} variant="outline" size="lg">
           <ShuffleIcon /> Shuffle
         </Button>
       </div>
