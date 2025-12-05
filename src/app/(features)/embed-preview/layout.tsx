@@ -1,4 +1,4 @@
-import { EmbedPreviewContextProvider } from "@/features/youtube-embed-preview/contexts/embed-preview-context";
+import { EmbedPreviewContextProvider } from "@/features/embed-preview/contexts/embed-preview-context";
 
 export default function Layout({
   children,

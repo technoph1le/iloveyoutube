@@ -32,7 +32,6 @@ export const ThumbnailPreviewFormProvider = ({
   const [category, setCategory] =
     useState<ThumbnailPreviewFormContextType["category"]>("all");
   const [error, setError] = useState("");
-  const [videos, setVideos] = useState<VideoCardType[]>([]);
   const previewRef = useRef<HTMLDivElement>(null);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -56,11 +55,6 @@ export const ThumbnailPreviewFormProvider = ({
     setTitle("");
     setChannel("");
     setError("");
-  }
-
-  function handleShuffle() {
-    const shuffledVideos = [...videos].sort(() => 0.5 - Math.random());
-    setVideos(shuffledVideos);
   }
 
   return (

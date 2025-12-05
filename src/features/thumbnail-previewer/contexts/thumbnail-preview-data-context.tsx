@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, ReactNode, useRef, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { ThumbnailPreviewDataContextType, VideoCardType } from "../types";
 
 export const ThumbnailPreviewDataContext =
@@ -17,7 +17,7 @@ export const ThumbnailPreviewDataProvider = ({
   children: ReactNode;
 }) => {
   const [videos, setVideos] = useState<VideoCardType[]>([]);
-  const previewRef = useRef<HTMLDivElement>(null);
+
   function handleShuffle() {
     const shuffledVideos = [...videos].sort(() => 0.5 - Math.random());
     setVideos(shuffledVideos);

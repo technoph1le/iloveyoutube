@@ -1,7 +1,8 @@
 import { LucideProps } from "lucide-react";
+import { ComponentType } from "react";
 
 export type FeatureItem = {
-  icon: React.ComponentType<LucideProps>;
+  icon: ComponentType<LucideProps>;
   title: string;
   description: string;
   link: string;

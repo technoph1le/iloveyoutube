@@ -12,8 +12,10 @@ export const EmbedPreviewContext = createContext<EmbedPreviewContextType>({
   setIsLoop: () => {},
   isMute: false,
   setIsMute: () => {},
-  hasControls: true,
+  hasControls: false,
   setHasControls: () => {},
+  isResponsive: false,
+  setIsResponsive: () => {},
   startTime: "",
   setStartTime: () => {},
   endTime: "",
@@ -31,7 +33,8 @@ export const EmbedPreviewContextProvider = ({
   const [isAutoplay, setIsAutoplay] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
   const [isMute, setIsMute] = useState(false);
-  const [hasControls, setHasControls] = useState(true);
+  const [hasControls, setHasControls] = useState(false);
+  const [isResponsive, setIsResponsive] = useState(false);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
@@ -40,7 +43,14 @@ export const EmbedPreviewContextProvider = ({
   }
 
   function handleReset() {
-    console.log("reset");
+    setVideoURL("");
+    setIsAutoplay(false);
+    setIsLoop(false);
+    setIsMute(false);
+    setHasControls(false);
+    setIsResponsive(false);
+    setStartTime("");
+    setEndTime("");
   }
 
   return (
@@ -56,6 +66,8 @@ export const EmbedPreviewContextProvider = ({
         setIsMute,
         hasControls,
         setHasControls,
+        isResponsive,
+        setIsResponsive,
         startTime,
         setStartTime,
         endTime,

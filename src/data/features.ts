@@ -76,7 +76,7 @@ export const FEATURES: FeatureItems = {
     title: "YouTube Embed Preview",
     description:
       "Preview how your video looks when embedded — copy the code in one click.",
-    link: "/youtube-embed-preview",
+    link: "/embed-preview",
   },
   commentExtractor: {
     icon: MessageSquareIcon,
