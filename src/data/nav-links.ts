@@ -4,8 +4,8 @@ export const NAV_LINKS = [
     url: "/about",
   },
   {
-    label: "FAQ",
-    url: "/faq",
+    label: "FAQs",
+    url: "/faqs",
   },
   {
     label: "Sponsor",

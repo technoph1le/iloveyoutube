@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import { FEATURES } from "@/data/features";
 
-import { EmbedPreviewContextProvider } from "@/features/embed-preview/contexts/embed-preview-context";
-
-const data = FEATURES.embedPreview;
+const data = FEATURES.chaptersGenerator;
 
 export const metadata: Metadata = {
   title: `${data.title} | iLoveYouTube`,
@@ -15,5 +13,5 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <EmbedPreviewContextProvider>{children}</EmbedPreviewContextProvider>;
+  return <>{children}</>;
 }

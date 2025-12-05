@@ -3,17 +3,18 @@ import {
   SectionSubtitle,
   SectionTitle,
 } from "@/components/ui/section";
+import { PAGES } from "@/data/pages";
 import { PricingTable } from "@clerk/nextjs";
 
 export default function Page() {
+  const data = PAGES.pricing;
+
   return (
     <section>
       <div className="wrapper py-8 space-y-6">
         <SectionHeader>
-          <SectionTitle>Pricing</SectionTitle>
-          <SectionSubtitle>
-            See our pricing plans and choose the one that fits your needs.
-          </SectionSubtitle>
+          <SectionTitle>{data.title}</SectionTitle>
+          <SectionSubtitle>{data.description}</SectionSubtitle>
         </SectionHeader>
 
         <div className="wrapper-sm">

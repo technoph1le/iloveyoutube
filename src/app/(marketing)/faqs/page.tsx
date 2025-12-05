@@ -10,16 +10,17 @@ import {
   SectionTitle,
 } from "@/components/ui/section";
 import { FAQ_ITEMS } from "@/data/faqs";
+import { PAGES } from "@/data/pages";
 
 export default function Page() {
+  const data = PAGES.faq;
+
   return (
     <section>
       <div className="wrapper py-8 space-y-6">
         <SectionHeader>
-          <SectionTitle>FAQ</SectionTitle>
-          <SectionSubtitle>
-            If you&apos;ve further questions, reach me out through Discord.
-          </SectionSubtitle>
+          <SectionTitle>{data.title}</SectionTitle>
+          <SectionSubtitle>{data.description}</SectionSubtitle>
         </SectionHeader>
         <Accordion
           className="max-w-2xl w-full mx-auto space-y-2"

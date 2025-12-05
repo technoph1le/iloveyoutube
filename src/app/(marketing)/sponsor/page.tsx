@@ -3,16 +3,17 @@ import {
   SectionSubtitle,
   SectionTitle,
 } from "@/components/ui/section";
+import { PAGES } from "@/data/pages";
 
 export default function Page() {
+  const data = PAGES.sponsor;
+
   return (
     <section>
       <div className="wrapper py-8">
         <SectionHeader>
-          <SectionTitle>Sponsor</SectionTitle>
-          <SectionSubtitle>
-            Support this project to ensure its core features remain free.
-          </SectionSubtitle>
+          <SectionTitle>{data.title}</SectionTitle>
+          <SectionSubtitle>{data.description}</SectionSubtitle>
         </SectionHeader>
 
         <p className="text-lg text-secondary-foreground mt-4">
