@@ -3,7 +3,7 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { YouTubeDesktopHeader } from "../youtube-header";
 import Image from "next/image";
-import { VideoCardType } from "../../types";
+import { VideoType } from "../../types";
 import useVideos from "../../hooks/use-videos";
 
 export default function DesktopSidebar() {
@@ -38,7 +38,7 @@ export default function DesktopSidebar() {
   );
 }
 
-function VideoItem({ video }: { video: VideoCardType }) {
+function VideoItem({ video }: { video: VideoType }) {
   return (
     <article key={video.thumbnail} className="grid gap-4 grid-cols-[2fr_3fr]">
       <AspectRatio ratio={16 / 9} className="w-full rounded-xl overflow-hidden">

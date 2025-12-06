@@ -1,12 +1,12 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
-import { VideoCardType, YouTubeVideoCardProps } from "../types";
+import { VideoType, YouTubeVideoCardProps } from "../types";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 interface Props extends YouTubeVideoCardProps {
-  video: VideoCardType;
+  video: VideoType;
 }
 
 export default function YouTubeVideoCard({

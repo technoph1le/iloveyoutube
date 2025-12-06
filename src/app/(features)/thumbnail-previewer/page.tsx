@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <>
       <section>
-        <div className="wrapper-xs py-8 space-y-8">
+        <div className="wrapper-sm py-8 space-y-8">
           <SectionHeader>
             <SectionTitle>{sectionInfo.title}</SectionTitle>
             <SectionSubtitle>{sectionInfo.description}</SectionSubtitle>

@@ -17,8 +17,8 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThumbnailPreviewDataProvider>
-      <ThumbnailPreviewFormProvider>{children}</ThumbnailPreviewFormProvider>;
-    </ThumbnailPreviewDataProvider>
+    <ThumbnailPreviewFormProvider>
+      <ThumbnailPreviewDataProvider>{children}</ThumbnailPreviewDataProvider>
+    </ThumbnailPreviewFormProvider>
   );
 }

@@ -44,7 +44,7 @@ export default function UploadCard({ img, setImg }: Props) {
   return (
     <Card
       {...getRootProps()}
-      className={`max-w-md w-full mx-auto py-0 border-dashed border-2 aspect-video overflow-hidden justify-center items-center ${
+      className={`max-w-lg w-full mx-auto py-0 border-dashed border-2 aspect-video overflow-hidden justify-center items-center ${
         (isDragActive || isHovered) && !img ? "border-primary/50 bg-muted" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}

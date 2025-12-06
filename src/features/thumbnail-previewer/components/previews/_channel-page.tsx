@@ -4,7 +4,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { YouTubeDesktopHeader } from "../youtube-header";
 import Image from "next/image";
 import YouTubeProfile from "../youtube-profile";
-import { VideoCardType } from "../../types";
+import { VideoType } from "../../types";
 import useVideos from "../../hooks/use-videos";
 
 export default function ChannelPage() {
@@ -41,7 +41,7 @@ export default function ChannelPage() {
   );
 }
 
-function VideoItem({ video }: { video: VideoCardType }) {
+function VideoItem({ video }: { video: VideoType }) {
   return (
     <article key={video.thumbnail}>
       <AspectRatio

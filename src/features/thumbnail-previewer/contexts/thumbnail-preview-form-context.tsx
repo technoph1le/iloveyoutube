@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, FormEvent, ReactNode, useRef, useState } from "react";
-import { ThumbnailPreviewFormContextType, VideoCardType } from "../types";
+import { ThumbnailPreviewFormContextType, VideoType } from "../types";
 
 export const ThumbnailPreviewFormContext =
   createContext<ThumbnailPreviewFormContextType>({
@@ -28,7 +28,7 @@ export const ThumbnailPreviewFormProvider = ({
   const [title, setTitle] = useState("");
   const [channel, setChannel] = useState("");
   const [thumbnail, setThumbnail] = useState("");
-  const [userVideo, setUserVideo] = useState<VideoCardType | null>(null);
+  const [userVideo, setUserVideo] = useState<VideoType | null>(null);
   const [category, setCategory] =
     useState<ThumbnailPreviewFormContextType["category"]>("all");
   const [error, setError] = useState("");
@@ -42,9 +42,12 @@ export const ThumbnailPreviewFormProvider = ({
     }
 
     setUserVideo({
-      title,
-      channel,
-      thumbnail,
+      videoId: "abcdefghijk",
+      title: title,
+      channelTitle: channel,
+      thumbnail: thumbnail,
+      publishedAt: "1 hour ago",
+      views: "35k",
     });
 
     previewRef.current?.scrollIntoView({ behavior: "smooth" });

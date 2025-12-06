@@ -6,5 +6,7 @@ import { ThumbnailPreviewDataContext } from "../contexts/thumbnail-preview-data-
 export default function useVideos() {
   const { videos } = useContext(ThumbnailPreviewDataContext);
 
+  if (!videos) return [];
+
   return videos;
 }

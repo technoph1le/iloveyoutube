@@ -6,7 +6,7 @@ import YouTubeTags from "../youtube-tags";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { VideoCardType } from "../../types";
+import { VideoType } from "../../types";
 import useVideos from "../../hooks/use-videos";
 
 export default function DesktopSearch() {
@@ -29,7 +29,7 @@ export default function DesktopSearch() {
   );
 }
 
-function VideoItem({ video }: { video: VideoCardType }) {
+function VideoItem({ video }: { video: VideoType }) {
   return (
     <article key={video.thumbnail} className="grid gap-4 grid-cols-[2fr_3fr]">
       <AspectRatio ratio={16 / 9} className="w-full rounded-xl overflow-hidden">

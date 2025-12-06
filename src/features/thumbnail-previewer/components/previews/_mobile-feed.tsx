@@ -2,7 +2,7 @@
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import useVideos from "../../hooks/use-videos";
-import { VideoCardType } from "../../types";
+import { VideoType } from "../../types";
 import { YouTubeMobileHeader } from "../youtube-header";
 import YouTubeTags from "../youtube-tags";
 import Image from "next/image";
@@ -28,7 +28,7 @@ export default function MobileFeed() {
   );
 }
 
-function VideoItem({ video }: { video: VideoCardType }) {
+function VideoItem({ video }: { video: VideoType }) {
   return (
     <article key={video.thumbnail}>
       <AspectRatio

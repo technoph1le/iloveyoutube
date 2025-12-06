@@ -1,39 +1,24 @@
-import { THUMBNAIL_PREVIEW_CATEGORIES } from "@/features/thumbnail-previewer/data/thumbnail-preview-categories";
 import { Dispatch, FormEvent, RefObject, SetStateAction } from "react";
 
-export type VideoCardType = {
+export type VideoType = {
+  videoId: string;
   title: string;
-  channel: string;
+  views: string;
   thumbnail: string;
+  channelTitle: string;
+  publishedAt: string;
 };
-
-export type OEmbedResponse = {
-  title: string;
-  author_name: string;
-  thumbnail_url: string;
-};
-
-export interface YouTubeVideoCardProps {
-  orientation?: "horizontal" | "vertical";
-  variant?: "mobile" | "desktop";
-  withoutAvatar?: boolean;
-  withoutChannel?: boolean;
-  withoutDescription?: boolean;
-  withoutTags?: boolean;
-}
 
 export interface ThumbnailPreviewFormContextType {
-  title: VideoCardType["title"];
+  title: string;
   setTitle: Dispatch<SetStateAction<string>>;
-  thumbnail: VideoCardType["thumbnail"];
+  thumbnail: string;
   setThumbnail: Dispatch<SetStateAction<string>>;
-  channel: VideoCardType["channel"];
+  channel: string;
   setChannel: Dispatch<SetStateAction<string>>;
-  category: keyof typeof THUMBNAIL_PREVIEW_CATEGORIES;
-  setCategory: Dispatch<
-    SetStateAction<ThumbnailPreviewFormContextType["category"]>
-  >;
-  userVideo: VideoCardType | null;
+  category: string;
+  setCategory: Dispatch<SetStateAction<string>>;
+  userVideo: VideoType | null;
   error: string;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   handleReset: () => void;
@@ -41,7 +26,7 @@ export interface ThumbnailPreviewFormContextType {
 }
 
 export interface ThumbnailPreviewDataContextType {
-  videos: VideoCardType[];
-  setVideos: Dispatch<SetStateAction<VideoCardType[]>>;
+  videos: VideoType[];
+  setVideos: Dispatch<SetStateAction<VideoType[]>>;
   handleShuffle: () => void;
 }

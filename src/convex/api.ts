@@ -13,5 +13,20 @@ export type PublicApiType = {
     >;
     get: FunctionReference<"query", "public", Record<string, never>, any>;
   };
+  actions: {
+    thumbnailPreviewer: {
+      fetchFeaturedVideos: FunctionReference<
+        "action",
+        "public",
+        Record<string, never>,
+        any
+      >;
+    };
+  };
+  queries: {
+    thumbnailPreviewer: {
+      getFeaturedVideos: FunctionReference<"query", "public", any, any>;
+    };
+  };
 };
 export type InternalApiType = {};

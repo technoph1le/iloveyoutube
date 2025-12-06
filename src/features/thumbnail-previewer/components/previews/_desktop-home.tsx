@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { YouTubeDesktopHeader } from "../youtube-header";
 import YouTubeTags from "../youtube-tags";
-import { VideoCardType } from "../../types";
+import { VideoType } from "../../types";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import useVideos from "../../hooks/use-videos";
@@ -20,17 +20,17 @@ export default function DesktopHome() {
         </section>
       </div>
       <section className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {videos.map((video) => (
-          <VideoItem key={video.thumbnail} video={video} />
+        {videos.filter(Boolean).map((video) => (
+          <VideoItem key={video.videoId} video={video} />
         ))}
       </section>
     </>
   );
 }
 
-function VideoItem({ video }: { video: VideoCardType }) {
+function VideoItem({ video }: { video: VideoType }) {
   return (
-    <article key={video.thumbnail}>
+    <article>
       <AspectRatio
         ratio={16 / 9}
         className="w-full h-full rounded-xl overflow-hidden"
@@ -52,8 +52,10 @@ function VideoItem({ video }: { video: VideoCardType }) {
             {video.title}
           </h3>
           <p className="text-muted-foreground leading-tight">
-            <span className="block">{video.channel}</span>
-            <span>36k views • 1 week ago</span>
+            <span className="block">{video.channelTitle}</span>
+            <span>
+              {video.views} views • {video.publishedAt}
+            </span>
           </p>
         </div>
       </div>

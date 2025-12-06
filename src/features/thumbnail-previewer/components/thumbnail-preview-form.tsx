@@ -29,7 +29,10 @@ export default function ThumbnailPreviewForm() {
   } = useContext(ThumbnailPreviewFormContext);
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 lg:grid-cols-2">
+    <form
+      onSubmit={handleSubmit}
+      className="grid gap-4 items-center lg:grid-cols-2"
+    >
       <UploadCard img={thumbnail} setImg={setThumbnail} />
       <FieldGroup>
         <Field>
@@ -42,6 +45,7 @@ export default function ThumbnailPreviewForm() {
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="md:text-base h-auto py-2 px-4"
           />
         </Field>
         <Field>
@@ -54,6 +58,7 @@ export default function ThumbnailPreviewForm() {
             required
             value={channel}
             onChange={(e) => setChannel(e.target.value)}
+            className="md:text-base h-auto py-2 px-4"
           />
         </Field>
         {error ? (
