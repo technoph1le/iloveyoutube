@@ -27,12 +27,13 @@ export default function ThumbnailDownloadInput({
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputGroup className="max-w-lg mx-auto">
+      <InputGroup className="max-w-lg mx-auto h-auto">
         <InputGroupInput
           value={videoURL}
           onChange={(e) => setVideoURL(e.target.value)}
-          placeholder="Enter the YouTube video link"
+          placeholder="Paste the YouTube video URL"
           required
+          className="md:text-base h-auto py-2 px-4"
         />
         <InputGroupAddon align="inline-end">
           {videoURL && (

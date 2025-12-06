@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { capitalize } from "@/lib/utils";
 import { useContext } from "react";
-import { ThumbnailPreviewFormContext } from "../contexts/thumbnail-preview-form-context";
-import { THUMBNAIL_PREVIEW_CATEGORIES } from "../data/thumbnail-preview-categories";
+import { ThumbnailPreviewFormContext } from "../../contexts/thumbnail-preview-form-context";
+import { THUMBNAIL_PREVIEW_CATEGORIES } from "../../data/thumbnail-preview-categories";
 
 export default function YouTubeTags() {
   const { category, setCategory } = useContext(ThumbnailPreviewFormContext);

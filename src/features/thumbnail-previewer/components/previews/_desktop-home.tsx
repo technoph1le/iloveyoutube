@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { YouTubeDesktopHeader } from "../youtube-header";
-import YouTubeTags from "../youtube-tags";
+import { YouTubeDesktopHeader } from "../widgets/youtube-header";
+import YouTubeTags from "../widgets/youtube-tags";
 import { VideoType } from "../../types";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -20,7 +20,7 @@ export default function DesktopHome() {
         </section>
       </div>
       <section className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {videos.filter(Boolean).map((video) => (
+        {videos.map((video) => (
           <VideoItem key={video.videoId} video={video} />
         ))}
       </section>
@@ -44,8 +44,8 @@ function VideoItem({ video }: { video: VideoType }) {
       </AspectRatio>
       <div className="flex gap-4 items-start pt-2">
         <Avatar className="size-10 mt-1">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={video.channelImage} alt={video.channelTitle} />
+          <AvatarFallback>{video.channelTitle.slice(0, 2)}</AvatarFallback>
         </Avatar>
         <div className="space-y-1">
           <h3 className="font-semibold leading-tight text-ellipsis whitespace-normal text-lg">

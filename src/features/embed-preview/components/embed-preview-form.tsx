@@ -43,8 +43,9 @@ export default function EmbedPreviewForm() {
           <InputGroupInput
             value={videoURL}
             onChange={(e) => setVideoURL(e.target.value)}
-            placeholder="Paste the YouTube video link"
+            placeholder="Paste the YouTube video URL"
             required
+            className="md:text-base h-auto py-2 px-4"
           />
           <InputGroupAddon align="inline-end">
             <InputGroupButton type="submit" aria-label="See embed preview">
@@ -64,13 +65,13 @@ export default function EmbedPreviewForm() {
       </div>
 
       <div className="max-w-5xl mx-auto py-4 space-y-4">
-        <FieldGroup className="grid gap-4 sm:grid-cols-2 md:grid-cols-5">
+        <FieldGroup className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
           {settings.map((setting) => (
             <SettingField key={setting.id} setting={setting} />
           ))}
         </FieldGroup>
 
-        <FieldGroup className="grid grid-cols-2 gap-4">
+        <FieldGroup className="grid sm:grid-cols-2 gap-4">
           <TimeField
             id="startTime"
             label="Start"

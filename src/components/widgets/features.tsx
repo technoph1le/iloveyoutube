@@ -12,10 +12,10 @@ export default function Features() {
             <Card className="hover:outline-1 h-full">
               <CardContent className="space-y-4">
                 <Icon size={42} />
-                <h3 className="text-lg font-bold flex items-center gap-2">
+                <h3 className="text-lg font-bold flex items-center flex-wrap gap-2">
                   {feature.title}
                   {feature.published ? (
-                    <Badge variant="outline">New</Badge>
+                    <Badge variant="default">New</Badge>
                   ) : null}
                 </h3>
                 <p className="text-sm text-muted-foreground">

@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import UploadCard from "@/components/widgets/upload-card";
 
-import { ThumbnailPreviewFormContext } from "../contexts/thumbnail-preview-form-context";
+import { ThumbnailPreviewFormContext } from "../../contexts/thumbnail-preview-form-context";
 
 export default function ThumbnailPreviewForm() {
   const {
@@ -68,11 +68,16 @@ export default function ThumbnailPreviewForm() {
           </FieldDescription>
         ) : null}
         <Field orientation="horizontal">
-          <Button type="reset" variant="outline" onClick={handleReset}>
+          <Button
+            type="reset"
+            variant="outline"
+            size="lg"
+            onClick={handleReset}
+          >
             <RotateCcwIcon />
             <span>Reset</span>
           </Button>
-          <Button type="submit">
+          <Button type="submit" size="lg">
             <span>Preview</span>
             <ArrowRightIcon />
           </Button>

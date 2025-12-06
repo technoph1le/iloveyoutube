@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import { DISCORD_URL } from "@/lib/constants";
 import Link from "next/link";
 
-export default function YouTubeProfile() {
+export default function YouTubeProfile({
+  channelTitle,
+}: {
+  channelTitle: string;
+}) {
   return (
     <article className="grid gap-4 py-6 grid-cols-[auto_1fr] items-center">
       <Avatar className="size-40">
@@ -13,15 +17,17 @@ export default function YouTubeProfile() {
       <div className="flex gap-4 items-start">
         <div className="space-y-2 leading-tight">
           <h3 className="font-semibold text-2xl text-ellipsis whitespace-normal">
-            Your channel name
+            {channelTitle}
           </h3>
           <p className="text-muted-foreground">
-            <span className="text-secondary-foreground">@channel</span> • 325k
-            subscribers • 245 videos
+            <span className="text-secondary-foreground">
+              @{channelTitle.toLowerCase()}
+            </span>{" "}
+            • 325k subscribers • 245 videos
           </p>
           <p className="text-muted-foreground">The best YouTube channel</p>
           <Link href={DISCORD_URL} className="block">
-            discorg.gg/youtube
+            discorg.gg/{channelTitle.toLowerCase()}
           </Link>
           <Button className="rounded-full mt-2">Subscribe</Button>
         </div>

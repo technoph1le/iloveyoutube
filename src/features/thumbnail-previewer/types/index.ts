@@ -3,9 +3,11 @@ import { Dispatch, FormEvent, RefObject, SetStateAction } from "react";
 export type VideoType = {
   videoId: string;
   title: string;
+  description: string;
   views: string;
   thumbnail: string;
   channelTitle: string;
+  channelImage: string;
   publishedAt: string;
 };
 

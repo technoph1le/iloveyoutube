@@ -27,6 +27,7 @@ export const FEATURES: FeatureItems = {
     title: "Thumbnail Previewer",
     description: "See how your thumbnail looks on mobile, desktop, and TV.",
     link: "/thumbnail-previewer",
+    published: true,
   },
   youtubeToMp3: {
     icon: MusicIcon,
@@ -77,6 +78,7 @@ export const FEATURES: FeatureItems = {
     description:
       "Preview how your video looks when embedded — copy the code in one click.",
     link: "/embed-preview",
+    published: true,
   },
   commentExtractor: {
     icon: MessageSquareIcon,

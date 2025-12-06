@@ -3,8 +3,8 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import useVideos from "../../hooks/use-videos";
 import { VideoType } from "../../types";
-import { YouTubeMobileHeader } from "../youtube-header";
-import YouTubeTags from "../youtube-tags";
+import { YouTubeMobileHeader } from "../widgets/youtube-header";
+import YouTubeTags from "../widgets/youtube-tags";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -44,16 +44,16 @@ function VideoItem({ video }: { video: VideoType }) {
       </AspectRatio>
       <div className="flex gap-4 items-start pt-2">
         <Avatar className="size-10 mt-1">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={video.channelImage} alt={video.channelTitle} />
+          <AvatarFallback>{video.channelTitle.slice(0, 2)}</AvatarFallback>
         </Avatar>
         <div className="space-y-1">
           <h3 className="font-semibold  leading-tight text-ellipsis whitespace-normal text-sm">
             {video.title}
           </h3>
           <p className="text-muted-foreground leading-tight">
-            <span>{video.channel} • </span>
-            36k views • 1 week ago
+            <span>{video.channelTitle} • </span>
+            {video.views} views • {video.publishedAt}
           </p>
         </div>
       </div>

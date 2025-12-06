@@ -1,14 +1,17 @@
 "use client";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { YouTubeDesktopHeader } from "../youtube-header";
+import { YouTubeDesktopHeader } from "../widgets/youtube-header";
 import Image from "next/image";
-import YouTubeProfile from "../youtube-profile";
+import YouTubeProfile from "../widgets/youtube-profile";
 import { VideoType } from "../../types";
 import useVideos from "../../hooks/use-videos";
+import { useContext } from "react";
+import { ThumbnailPreviewFormContext } from "../../contexts/thumbnail-preview-form-context";
 
 export default function ChannelPage() {
   const videos = useVideos();
+  const { userVideo } = useContext(ThumbnailPreviewFormContext);
 
   return (
     <>
@@ -19,7 +22,7 @@ export default function ChannelPage() {
         <section>
           <AspectRatio
             ratio={2560 / 423}
-            className="w-full rounded-3xl overflow-hidden"
+            className="w-full rounded-2xl overflow-hidden"
           >
             <Image
               src="/assets/banner-placeholder.jpg"
@@ -29,7 +32,9 @@ export default function ChannelPage() {
           </AspectRatio>
         </section>
         <section>
-          <YouTubeProfile />
+          <YouTubeProfile
+            channelTitle={userVideo ? userVideo.channelTitle : "Channel Name"}
+          />
         </section>
         <section className="wrapper grid gap-4 py-4 sm:grid-cols-3 md:grid-cols-5">
           {videos.map((video) => (
@@ -57,11 +62,13 @@ function VideoItem({ video }: { video: VideoType }) {
       </AspectRatio>
       <div className="flex gap-4 items-start pt-2">
         <div className="space-y-1">
-          <h3 className="font-semibold  leading-tight text-ellipsis whitespace-normal text-base">
+          <h3 className="font-semibold text-sm leading-tight text-ellipsis whitespace-normal">
             {video.title}
           </h3>
-          <p className="text-muted-foreground leading-tight">
-            <span>36k views • 1 week ago</span>
+          <p className="text-muted-foreground text-xs leading-tight">
+            <span>
+              {video.views} views • {video.publishedAt}
+            </span>
           </p>
         </div>
       </div>

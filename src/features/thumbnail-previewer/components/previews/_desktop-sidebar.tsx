@@ -1,7 +1,7 @@
 "use client";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { YouTubeDesktopHeader } from "../youtube-header";
+import { YouTubeDesktopHeader } from "../widgets/youtube-header";
 import Image from "next/image";
 import { VideoType } from "../../types";
 import useVideos from "../../hooks/use-videos";
@@ -55,11 +55,13 @@ function VideoItem({ video }: { video: VideoType }) {
             {video.title}
           </h3>
           <p className="text-muted-foreground leading-tight">
-            36k views • 1 week ago
+            {video.views} views • {video.publishedAt}
           </p>
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-muted-foreground leading-tight">{video.channel}</p>
+          <p className="text-muted-foreground leading-tight">
+            {video.channelTitle}
+          </p>
         </div>
       </div>
     </article>

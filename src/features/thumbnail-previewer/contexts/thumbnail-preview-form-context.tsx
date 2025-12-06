@@ -44,7 +44,10 @@ export const ThumbnailPreviewFormProvider = ({
     setUserVideo({
       videoId: "abcdefghijk",
       title: title,
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit modi, molestiae.",
       channelTitle: channel,
+      channelImage: "https://github.com/shadcn.png",
       thumbnail: thumbnail,
       publishedAt: "1 hour ago",
       views: "35k",

@@ -1,16 +1,14 @@
 "use client";
 
-import { MonitorIcon, ShuffleIcon } from "lucide-react";
+import { ShuffleIcon } from "lucide-react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { THUMBNAIL_PREVIEW_OPTIONS } from "../data/thumbnail-preview-options";
+import { THUMBNAIL_PREVIEW_OPTIONS } from "../../data/thumbnail-preview-options";
 import { memo, ReactNode, useContext } from "react";
-import useIsMobile from "@/hooks/use-mobile";
-import { ThumbnailPreviewDataContext } from "../contexts/thumbnail-preview-data-context";
+import { ThumbnailPreviewDataContext } from "../../contexts/thumbnail-preview-data-context";
 
 export default function ThumbnailPreviewOptions() {
-  const isMobile = useIsMobile();
   const { handleShuffle } = useContext(ThumbnailPreviewDataContext);
 
   return (
@@ -34,14 +32,7 @@ export default function ThumbnailPreviewOptions() {
         ([key, { content: Content }]) => (
           <TabsContent key={key} value={key} className="py-4 min-h-screen">
             <MemoizedContent>
-              {isMobile ? (
-                <div className="text-center py-4 space-y-4">
-                  <MonitorIcon size={48} className="mx-auto" />
-                  <p>You can only preview this on Desktop.</p>
-                </div>
-              ) : (
-                <Content />
-              )}
+              <Content />
             </MemoizedContent>
           </TabsContent>
         )

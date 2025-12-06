@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { FEATURES } from "@/data/features";
 
 import { ThumbnailPreviewFormContext } from "@/features/thumbnail-previewer/contexts/thumbnail-preview-form-context";
-import ThumbnailPreviewOptions from "@/features/thumbnail-previewer/components/thumbnail-preview-options";
-import ThumbnailPreviewForm from "@/features/thumbnail-previewer/components/thumbnail-preview-form";
+import ThumbnailPreviewOptions from "@/features/thumbnail-previewer/components/layouts/thumbnail-preview-options";
+import ThumbnailPreviewForm from "@/features/thumbnail-previewer/components/layouts/thumbnail-preview-form";
 
 import {
   SectionHeader,

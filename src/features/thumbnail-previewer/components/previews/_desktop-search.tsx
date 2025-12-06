@@ -1,8 +1,8 @@
 "use client";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { YouTubeDesktopHeader } from "../youtube-header";
-import YouTubeTags from "../youtube-tags";
+import { YouTubeDesktopHeader } from "../widgets/youtube-header";
+import YouTubeTags from "../widgets/youtube-tags";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -46,21 +46,21 @@ function VideoItem({ video }: { video: VideoType }) {
             {video.title}
           </h3>
           <p className="text-muted-foreground leading-tight">
-            36k views • 1 week ago
+            {video.views} views • {video.publishedAt}
           </p>
         </div>
         <div className="flex gap-2 items-center">
           <Avatar className="size-8">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarImage src={video.channelImage} alt={video.channelTitle} />
+            <AvatarFallback>{video.channelTitle.slice(0, 2)}</AvatarFallback>
           </Avatar>
 
-          <p className="text-muted-foreground leading-tight">{video.channel}</p>
+          <p className="text-muted-foreground leading-tight">
+            {video.channelTitle}
+          </p>
         </div>
         <p className="truncate overflow-hidden h-5 max-w-lg leading-tight text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam porro
-          cum dolorum totam quam eveniet ipsum nesciunt veniam consequatur sed.
-          Vitae alias expedita soluta quo.
+          {video.description}
         </p>
 
         <div className="flex gap-2">
