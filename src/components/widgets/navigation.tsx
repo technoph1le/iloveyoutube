@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 
-import useIsMobile from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 import { SOCIAL_LINKS } from "@/data/social-links";
 import { NAV_LINKS } from "@/data/nav-links";

@@ -12,6 +12,7 @@ import {
   Code2Icon,
   MessageSquareIcon,
   GalleryVerticalIcon,
+  CodeIcon,
 } from "lucide-react";
 
 export const FEATURES: FeatureItems = {
@@ -41,11 +42,11 @@ export const FEATURES: FeatureItems = {
     description: "Download YouTube videos in MP4 format instantly.",
     link: "/youtube-to-mp4",
   },
-  safeZoneOverlay: {
-    icon: PanelsTopLeftIcon,
-    title: "Safe Zones Overlay",
-    description: "Check if text or faces get covered by YouTube UI elements.",
-    link: "/thumbnail-safe-zone",
+  youtubeTranscript: {
+    icon: FileTextIcon,
+    title: "YouTube to Transcript",
+    description: "Get clean, ready-to-copy transcripts from any YouTube video.",
+    link: "/youtube-transcript",
   },
   chaptersGenerator: {
     icon: ListOrderedIcon,
@@ -66,12 +67,6 @@ export const FEATURES: FeatureItems = {
     description: "Extract crisp frames from any YouTube video.",
     link: "/video-screenshot",
   },
-  youtubeTranscript: {
-    icon: FileTextIcon,
-    title: "YouTube to Transcript",
-    description: "Get clean, ready-to-copy transcripts from any YouTube video.",
-    link: "/youtube-transcript",
-  },
   embedPreview: {
     icon: Code2Icon,
     title: "YouTube Embed Preview",
@@ -80,12 +75,11 @@ export const FEATURES: FeatureItems = {
     link: "/embed-preview",
     published: true,
   },
-  commentExtractor: {
-    icon: MessageSquareIcon,
-    title: "Comment Screenshot Tool",
-    description:
-      "Grab real YouTube comments and export clean snapshots for thumbnails.",
-    link: "/comment-extractor",
+  safeZoneOverlay: {
+    icon: PanelsTopLeftIcon,
+    title: "Safe Zones Overlay",
+    description: "Check if text or faces get covered by YouTube UI elements.",
+    link: "/thumbnail-safe-zone",
   },
   crossPostPreview: {
     icon: GalleryVerticalIcon,
@@ -93,5 +87,12 @@ export const FEATURES: FeatureItems = {
     description:
       "Preview how your thumbnails look across Instagram, X, TikTok, and more.",
     link: "/cross-post-preview",
+  },
+  apiSandbox: {
+    icon: CodeIcon,
+    title: "YouTube API Sandbox",
+    description:
+      "Test, fetch, and generate API code snippets for common tasks — no Postman required.",
+    link: "/api-sandbox",
   },
 };

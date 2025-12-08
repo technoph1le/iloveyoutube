@@ -14,13 +14,13 @@ export type FeatureItemKey =
   | "thumbnailPreviewer"
   | "youtubeToMp3"
   | "youtubeToMp4"
-  | "safeZoneOverlay"
+  | "youtubeTranscript"
   | "chaptersGenerator"
   | "titleFormatter"
   | "videoScreenshot"
-  | "youtubeTranscript"
   | "embedPreview"
-  | "commentExtractor"
-  | "crossPostPreview";
+  | "safeZoneOverlay"
+  | "crossPostPreview"
+  | "apiSandbox";
 
 export type FeatureItems = Record<FeatureItemKey, FeatureItem>;

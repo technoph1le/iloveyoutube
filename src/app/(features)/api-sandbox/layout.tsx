@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { FEATURES } from "@/data/features";
 
-const data = FEATURES.commentExtractor;
+const data = FEATURES.apiSandbox;
 
 export const metadata: Metadata = {
   title: `${data.title} | iLoveYouTube`,
