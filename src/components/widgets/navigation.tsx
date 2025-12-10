@@ -1,14 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { LogInIcon, MenuIcon, XIcon } from "lucide-react";
+import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
-import { Authenticated, Unauthenticated } from "convex/react";
-import { SignInButton, UserButton } from "@clerk/nextjs";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import { SOCIAL_LINKS } from "@/data/social-links";
 import { NAV_LINKS } from "@/data/nav-links";
 
 import { ThemeToggle } from "@/components/widgets/theme-toggle";
@@ -29,10 +26,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { Skeleton } from "../ui/skeleton";
+import { Authenticated, Unauthenticated } from "convex/react";
+import { LogInIcon } from "lucide-react";
 
 export default function Navigation() {
-  const isMobile = useIsMobile();
+  const { isMounted, isMobile } = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  if (!isMounted) return null;
 
   return (
     <>
@@ -58,18 +66,23 @@ export default function Navigation() {
                 ))}
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuLabel>
-                <ThemeToggle />
-              </DropdownMenuLabel>
-              <DropdownMenuGroup className="flex flex-wrap gap-2 m-2">
-                {SOCIAL_LINKS.map(({ label, url, icon: Icon }) => (
-                  <DropdownMenuItem key={label}>
-                    <Link href={url} target="_blank" rel="noopener noreferrer">
-                      <Icon className="size-5" />
-                      <span className="sr-only">{label}</span>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
+              <DropdownMenuGroup className="flex items-center">
+                <DropdownMenuLabel className="flex items-center">
+                  <Authenticated>
+                    <UserButton />
+                  </Authenticated>
+                  <Unauthenticated>
+                    <SignInButton>
+                      <Button>
+                        <LogInIcon />
+                        Sign in
+                      </Button>
+                    </SignInButton>
+                  </Unauthenticated>
+                </DropdownMenuLabel>
+                <DropdownMenuLabel>
+                  <ThemeToggle />
+                </DropdownMenuLabel>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -90,19 +103,25 @@ export default function Navigation() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <Authenticated>
-                <NavigationMenuLink>
-                  <UserButton />
-                </NavigationMenuLink>
-              </Authenticated>
-              <Unauthenticated>
-                <SignInButton>
-                  <Button>
-                    <LogInIcon />
-                    Sign in
-                  </Button>
-                </SignInButton>
-              </Unauthenticated>
+              <ClerkLoading>
+                <Skeleton className="w-9 h-9" />
+              </ClerkLoading>
+
+              <ClerkLoaded>
+                <Authenticated>
+                  <NavigationMenuLink href="#">
+                    <UserButton />
+                  </NavigationMenuLink>
+                </Authenticated>
+                <Unauthenticated>
+                  <SignInButton>
+                    <Button>
+                      <LogInIcon />
+                      Sign in
+                    </Button>
+                  </SignInButton>
+                </Unauthenticated>
+              </ClerkLoaded>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

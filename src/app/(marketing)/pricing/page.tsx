@@ -3,6 +3,7 @@ import {
   SectionSubtitle,
   SectionTitle,
 } from "@/components/ui/section";
+import { Skeleton } from "@/components/ui/skeleton";
 import { PAGES } from "@/data/pages";
 import { PricingTable } from "@clerk/nextjs";
 
@@ -30,6 +31,7 @@ export default function Page() {
                 pricingTableCardFooter: "bg-card! border-0!",
               },
             }}
+            fallback={<Skeleton className="w-full aspect-5/2" />}
           />
         </div>
       </div>

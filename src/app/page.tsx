@@ -31,6 +31,7 @@ export default function Home() {
       </section>
       <section>
         <div className="wrapper py-8">
+          <h2 className="sr-only">All the features</h2>
           <Features />
         </div>
       </section>
