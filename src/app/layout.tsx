@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Roboto_Slab, Roboto } from "next/font/google";
+
 import "./globals.css";
+
+import { ConvexClerkProvider } from "@/providers/convex-clerk-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
+
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import { Toaster } from "@/components/ui/sonner";
-import { ConvexClerkProvider } from "@/providers/convex-clerk-provider";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
@@ -25,7 +28,7 @@ const roboto = Roboto({
   variable: "--font-youtube",
 });
 
-export const siteBaseUrl = "https://iloveyoutube.vercel.app";
+export const siteBaseUrl = "https://iloveyoutube.dev";
 
 export const metadata: Metadata = {
   title: "iLoveYouTube | Free online YouTube tools",
