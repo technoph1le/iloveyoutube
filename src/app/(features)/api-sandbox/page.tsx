@@ -36,9 +36,11 @@ export default function Page() {
             <Sidebar variant="floating">
               <ApiEndpointSelector />
             </Sidebar>
-            <div className="grid gap-4 p-2 w-full">
+            <div className="grid gap-4 p-2 w-full items-start self-start">
               <ApiInputPanel />
+              <hr />
               <ApiResponsePreview />
+              <hr />
               <ApiCodeSnippet />
             </div>
           </SidebarProvider>

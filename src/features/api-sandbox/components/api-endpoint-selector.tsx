@@ -21,8 +21,12 @@ export default function ApiEndpointSelector() {
     <SidebarContent>
       <SidebarGroup>
         <SidebarMenu>
-          {ENDPOINT_OPTIONS.map(({ icon: Icon, ...option }) => (
-            <Collapsible defaultOpen className="group/collapsible">
+          {ENDPOINT_OPTIONS.map(({ icon: Icon, ...option }, index) => (
+            <Collapsible
+              key={option.label}
+              className="group/collapsible"
+              defaultOpen={index === 0} // only default open the first item
+            >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton className="h-auto py-2 px-4">
@@ -37,7 +41,10 @@ export default function ApiEndpointSelector() {
                     <SidebarMenuSub>
                       {option.items.map((item) => (
                         <SidebarMenuSubItem key={item.key}>
-                          <SidebarMenuSubButton className="h-auto py-1 px-3 text-base cursor-pointer">
+                          <SidebarMenuSubButton
+                            isActive={item.key === "getVideoDetails"}
+                            className="h-auto py-1 px-3 text-base cursor-pointer"
+                          >
                             {item.label}
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>

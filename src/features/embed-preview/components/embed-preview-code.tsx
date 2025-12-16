@@ -5,10 +5,8 @@ import { EmbedPreviewContext } from "../contexts/embed-preview-context";
 import { getEmbedCode } from "../utils/get-embed-code";
 import { extractYouTubeId } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CheckIcon, CopyIcon } from "lucide-react";
-import useCopyClipboard from "../hooks/use-copy-clipboard";
 import { Skeleton } from "@/components/ui/skeleton";
+import ClipboardButton from "@/components/widgets/clipboard-button";
 
 export default function EmbedPreviewCode() {
   const {
@@ -21,7 +19,6 @@ export default function EmbedPreviewCode() {
     startTime,
     endTime,
   } = useContext(EmbedPreviewContext);
-  const { isCopied, copyToClipboard } = useCopyClipboard();
 
   const { iframeSrc, iframeCode } = getEmbedCode({
     videoId: extractYouTubeId(videoURL) || "o3UU9TjDV4g",
@@ -53,14 +50,7 @@ export default function EmbedPreviewCode() {
         </div>
 
         <Card className="relative">
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={() => copyToClipboard(iframeCode)}
-            className="absolute top-2 right-2 z-10"
-          >
-            {isCopied ? <CheckIcon /> : <CopyIcon />}
-          </Button>
+          <ClipboardButton copy={iframeCode} />
 
           <CardContent className="overflow-x-auto">
             <pre className="break-all whitespace-pre-wrap">{iframeCode}</pre>
