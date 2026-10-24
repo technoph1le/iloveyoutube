@@ -63,8 +63,9 @@ export default function Page() {
             signing up.
           </li>
           <li>
-            <strong>Private.</strong> No ads, no analytics and no tracking
-            cookies. Images you test stay on your device. See the{" "}
+            <strong>Private.</strong> No ads and no tracking cookies. We count
+            visits with cookie-free analytics that can&apos;t identify you.
+            Images you test stay on your device. See the{" "}
             <Link href="/privacy">privacy policy</Link>.
           </li>
           <li>

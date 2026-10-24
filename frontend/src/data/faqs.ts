@@ -55,7 +55,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Do you use cookies or tracking?",
         answer:
-          "There are no ads, no analytics and no tracking cookies. The only cookie remembers whether you chose the light or dark theme.",
+          "There are no ads and no tracking cookies. The only cookie remembers whether you chose the light or dark theme. To see which tools are popular, we use Vercel Web Analytics, which counts page views without cookies and can't identify you.",
         link: { href: "/privacy", label: "Read the privacy policy" },
       },
       {

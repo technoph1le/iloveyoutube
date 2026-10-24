@@ -1,6 +1,6 @@
 # iLoveYouTube
 
-**Free online YouTube tools for creators and viewers.** No account, no sign-up, no tracking.
+**Free online YouTube tools for creators and viewers.** No account, no sign-up, no tracking cookies.
 
 🌐 **[iloveyoutube.dev](https://www.iloveyoutube.dev)** · 💬 [Discord](https://discord.gg/Nm5K46yUy5) · ☕ [Sponsor](https://ko-fi.com/technoph1le) · 📺 [YouTube](https://youtube.com/@technoph1le)
 
@@ -18,11 +18,12 @@ More are on the way: transcripts, a chapters generator, a title and description 
 
 ### Privacy first
 
-Your uploads stay in your browser. YouTube images are served through our own domain, so your browser never contacts Google just because you opened a page.
+Your uploads stay in your browser. YouTube images are served through our own domain, so your browser never contacts Google just because you opened a page. Visits are counted with [Vercel Web Analytics](https://vercel.com/docs/analytics/privacy-policy), which sets no cookies and can't identify individual visitors.
 
 ## Tech stack
 
 - **Frontend:** [Next.js](https://nextjs.org) 16, React 19, Tailwind CSS 4, [Lucide](https://lucide.dev) icons
+- **Analytics:** [Vercel Web Analytics](https://vercel.com/docs/analytics) (cookie-free)
 - **Backend:** [Express](https://expressjs.com) 5 API with [Zod](https://zod.dev) for config validation
 - **Data:** [YouTube Data API v3](https://developers.google.com/youtube/v3)
 - **Hosting:** Vercel (frontend) and Railway (backend)

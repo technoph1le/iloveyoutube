@@ -10,7 +10,7 @@ import { pageMetadata } from "@/utils/seo";
 export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "How iLoveYouTube handles your data: no accounts, no analytics, no tracking cookies, and images that never leave your device.",
+    "How iLoveYouTube handles your data: no accounts, no tracking cookies, cookie-free visitor statistics, and images that never leave your device.",
   path: "/privacy",
 });
 
@@ -30,7 +30,11 @@ export default function Page() {
             or email.
           </li>
           <li>
-            No ads, no analytics, no tracking cookies, and we never sell data.
+            No ads, no tracking cookies, and we never sell data.
+          </li>
+          <li>
+            We count visits with Vercel Web Analytics, which uses no cookies and
+            can&apos;t tell who you are.
           </li>
           <li>
             Thumbnails you test in the Thumbnail Previewer never leave your
@@ -58,6 +62,24 @@ export default function Page() {
           abuse. It may be kept briefly in server logs and then deleted. Legal
           basis: our legitimate interest in running a secure website (GDPR Art.
           6(1)(f)).
+        </p>
+
+        <h3>Visitor statistics</h3>
+        <p>
+          We use{" "}
+          <ExternalLink href="https://vercel.com/docs/analytics/privacy-policy">
+            Vercel Web Analytics
+          </ExternalLink>{" "}
+          to see which pages and tools are used, so we know what to improve.
+          When you open a page, it records the page address, the referring
+          site, your browser, operating system, device type and country. It
+          sets no cookies and stores nothing on your device. To count unique
+          visitors, it uses a hash of your request that is discarded after 24
+          hours, so visits can&apos;t be linked to you or followed across days
+          or other websites. We only ever see totals. The script is loaded from
+          our own domain. Legal basis: our legitimate interest in understanding
+          how the site is used (GDPR Art. 6(1)(f)). You can block it with any
+          common content blocker; the site works the same without it.
         </p>
 
         <h3>Using the tools</h3>
@@ -102,8 +124,8 @@ export default function Page() {
           We set one cookie, <code>theme</code>, only when you switch between
           light and dark mode. It stores your choice for one year and contains
           nothing else. Because it only provides a feature you asked for, it
-          doesn&apos;t require consent. We use no analytics, advertising or
-          tracking cookies.
+          doesn&apos;t require consent. We use no advertising or tracking
+          cookies, and our visitor statistics work without cookies.
         </p>
 
         <h2>Who else receives data</h2>
@@ -118,6 +140,10 @@ export default function Page() {
               the EU-US Data Privacy Framework.
             </li>
           ))}
+          <li>
+            <strong>Visitor statistics:</strong> Vercel Inc. processes the
+            anonymous page-view data described above on our behalf.
+          </li>
           <li>
             <strong>YouTube (Google):</strong> only if you load the live player,
             as described above.

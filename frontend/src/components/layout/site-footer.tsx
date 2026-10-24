@@ -13,7 +13,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border px-4 py-12 text-center">
       <p className="mx-auto max-w-2xl text-lg leading-relaxed">
-        Free, private YouTube tools for creators and viewers. No account, no ads, no tracking.
+        Free, private YouTube tools for creators and viewers. No account, no ads, no tracking cookies.
       </p>
 
       <nav aria-label="Footer" className="mt-8">
