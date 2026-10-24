@@ -1,21 +1,9 @@
-// Fetches YouTube's trending ("most popular") videos per category with the
-// YouTube Data API v3. A full refresh costs roughly 15 quota units.
+// Fetches YouTube's trending ("most popular") videos with the YouTube Data
+// API v3. A full refresh costs 2 quota units.
 
 const API = "https://www.googleapis.com/youtube/v3";
 
-export const CATEGORIES = [
-  { id: "all", label: "All", youtubeId: null },
-  { id: "music", label: "Music", youtubeId: "10" },
-  { id: "gaming", label: "Gaming", youtubeId: "20" },
-  { id: "entertainment", label: "Entertainment", youtubeId: "24" },
-  { id: "sports", label: "Sports", youtubeId: "17" },
-  { id: "news", label: "News", youtubeId: "25" },
-  { id: "film", label: "Film & Animation", youtubeId: "1" },
-  { id: "tech", label: "Science & Tech", youtubeId: "28" },
-  { id: "education", label: "Education", youtubeId: "27" },
-  { id: "howto", label: "How-to & Style", youtubeId: "26" },
-  { id: "comedy", label: "Comedy", youtubeId: "23" },
-] as const;
+const FEED_SIZE = 40;
 
 export type FeedVideo = {
   id: string;
@@ -85,58 +73,32 @@ function pickThumbnail(thumbnails: Thumbnails) {
 }
 
 export async function fetchFeed(apiKey: string, region: string): Promise<Feed> {
-  const byId = new Map<string, FeedVideo>();
-  const available: { id: string; label: string }[] = [];
+  const { items } = await get<{ items: VideoItem[] }>(
+    "videos",
+    {
+      part: "snippet,contentDetails,statistics",
+      chart: "mostPopular",
+      regionCode: region,
+      maxResults: String(FEED_SIZE),
+    },
+    apiKey,
+  );
 
-  for (const category of CATEGORIES) {
-    let items: VideoItem[];
-    try {
-      const data = await get<{ items: VideoItem[] }>(
-        "videos",
-        {
-          part: "snippet,contentDetails,statistics",
-          chart: "mostPopular",
-          regionCode: region,
-          maxResults: "24",
-          ...(category.youtubeId ? { videoCategoryId: category.youtubeId } : {}),
-        },
-        apiKey,
-      );
-      items = data.items;
-    } catch (err) {
-      // Some categories have no chart in some regions; skip them, but a
-      // failing "all" chart (bad key, quota) fails the whole refresh.
-      if (!category.youtubeId) throw err;
-      console.warn(`Skipping category ${category.id}: ${(err as Error).message}`);
-      continue;
-    }
-    if (!items.length) continue;
-    available.push({ id: category.id, label: category.label });
-
-    for (const item of items) {
-      const existing = byId.get(item.id);
-      if (existing) {
-        if (!existing.categories.includes(category.id)) existing.categories.push(category.id);
-        continue;
-      }
-      byId.set(item.id, {
-        id: item.id,
-        title: item.snippet.title,
-        channelId: item.snippet.channelId,
-        channelTitle: item.snippet.channelTitle,
-        channelAvatar: null,
-        viewCount: Number(item.statistics.viewCount ?? 0),
-        publishedAt: item.snippet.publishedAt,
-        durationSeconds: parseDuration(item.contentDetails.duration),
-        isLive: item.snippet.liveBroadcastContent === "live",
-        thumbnail: pickThumbnail(item.snippet.thumbnails),
-        categories: [category.id],
-      });
-    }
-  }
+  const videos: FeedVideo[] = items.map((item) => ({
+    id: item.id,
+    title: item.snippet.title,
+    channelId: item.snippet.channelId,
+    channelTitle: item.snippet.channelTitle,
+    channelAvatar: null,
+    viewCount: Number(item.statistics.viewCount ?? 0),
+    publishedAt: item.snippet.publishedAt,
+    durationSeconds: parseDuration(item.contentDetails.duration),
+    isLive: item.snippet.liveBroadcastContent === "live",
+    thumbnail: pickThumbnail(item.snippet.thumbnails),
+    categories: ["all"],
+  }));
 
   // Channel avatars, 50 channels per request.
-  const videos = [...byId.values()];
   const channelIds = [...new Set(videos.map((v) => v.channelId))];
   const avatars = new Map<string, string>();
   for (let i = 0; i < channelIds.length; i += 50) {
@@ -155,7 +117,7 @@ export async function fetchFeed(apiKey: string, region: string): Promise<Feed> {
   return {
     fetchedAt: new Date().toISOString(),
     region,
-    categories: available,
+    categories: [{ id: "all", label: "All" }],
     videos: videos.filter((v) => v.thumbnail),
   };
 }
