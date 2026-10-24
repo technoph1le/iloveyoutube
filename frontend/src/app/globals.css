@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Dark is the default theme (matches the design); light is opt-in. */
+:root,
+[data-theme="dark"] {
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
+  --card: #181818;
+  --muted: #212121;
+  --muted-foreground: #a3a3a3;
+  --border: #2a2a2a;
+  --brand: #ff0000;
+  /* Fills behind white text: #ff0000 is only ~4:1 with white (WCAG AA needs 4.5:1). */
+  --brand-strong: #cc0000;
+}
+
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #0f0f0f;
+  --card: #fafafa;
+  --muted: #f0f0f0;
+  --muted-foreground: #5c5c5c;
+  --border: #e5e5e5;
+  --brand: #e00000;
+  --brand-strong: #cc0000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --font-sans: var(--font-source-sans);
+  --font-logo: var(--font-logo-serif);
+}
+
+html {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Visible keyboard focus on everything interactive (WCAG 2.4.7 / 2.4.11). */
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+/* Respect the "reduce motion" system setting (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
