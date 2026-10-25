@@ -8,7 +8,6 @@ import {
   ListOrdered,
   PanelsTopLeft,
   Scissors,
-  Type,
   type LucideIcon,
 } from "lucide-react";
 
@@ -32,7 +31,6 @@ export const tools: Tool[] = [
     description: "Grab any YouTube thumbnail in full resolution.",
     icon: Download,
     isDisplayed: true,
-    isNew: true,
     metaTitle: "YouTube Thumbnail Downloader (HD, Full Resolution)",
     metaDescription:
       "Download any YouTube video thumbnail in every size, from Full HD 1280×720 down to 120×90, as JPG or WebP. Free, fast, no sign-up.",
@@ -40,10 +38,10 @@ export const tools: Tool[] = [
   {
     slug: "thumbnail-previewer",
     title: "Thumbnail Previewer",
-    description: "See how your thumbnail looks on mobile, desktop, and TV.",
+    description:
+      "See how your thumbnail looks on mobile, desktop, and TV. Also, A/B test your thumbnails.",
     icon: Image,
     isDisplayed: true,
-    isNew: true,
     metaTitle: "YouTube Thumbnail Previewer & Tester",
     metaDescription:
       "Test your YouTube thumbnail and title in a realistic feed on home, search, mobile and TV before you publish. Compare A/B versions. Free and private.",
@@ -51,10 +49,10 @@ export const tools: Tool[] = [
   {
     slug: "embed-code-generator",
     title: "Embed Code Generator",
-    description: "Customize a YouTube player for your website, see it live, and copy the code.",
+    description:
+      "Customize a YouTube player for your website, see it live, and copy the code.",
     icon: CodeXml,
     isDisplayed: true,
-    isNew: true,
     metaTitle: "YouTube Embed Code Generator (Responsive, Privacy-Friendly)",
     metaDescription:
       "Generate responsive YouTube embed code with autoplay, loop, start and end times, and privacy-enhanced mode. Live preview, HTML or React.",
@@ -67,18 +65,16 @@ export const tools: Tool[] = [
     isDisplayed: false,
   },
   {
-    slug: "chapters-generator",
-    title: "Chapters Generator",
-    description: "Turn transcripts into clean, ready-to-paste video chapters.",
+    slug: "description-builder",
+    title: "Description Builder",
+    description:
+      "Drop in your transcript and get a title, description, chapters and hashtags, with your links added, ready to copy.",
     icon: ListOrdered,
-    isDisplayed: false,
-  },
-  {
-    slug: "title-description-formatter",
-    title: "Title & Description Formatter",
-    description: "Beautify your titles and descriptions with proper formatting.",
-    icon: Type,
-    isDisplayed: false,
+    isDisplayed: true,
+    isNew: true,
+    metaTitle: "AI YouTube Description & Chapters Generator",
+    metaDescription:
+      "Turn a video transcript into a YouTube title, description, chapters and hashtags with AI. Add your links and socials, check YouTube's limits, and copy. Free.",
   },
   {
     slug: "video-screenshot",
@@ -90,23 +86,34 @@ export const tools: Tool[] = [
   {
     slug: "safe-zones-overlay",
     title: "Safe Zones Overlay",
-    description: "Check if text or faces get covered by YouTube UI elements.",
+    description:
+      "Check if text or faces get covered by YouTube's buttons and badges on thumbnails, Shorts and banners.",
     icon: PanelsTopLeft,
-    isDisplayed: false,
+    isDisplayed: true,
+    isNew: true,
+    metaTitle: "YouTube Safe Zones Overlay (Shorts, Thumbnails, Banners)",
+    metaDescription:
+      "See where YouTube's buttons, captions and badges cover your Shorts, thumbnails, videos and channel art. Download free safe zone templates. Private, in your browser.",
   },
   {
     slug: "cross-platform-preview",
     title: "Cross-Platform Post Preview",
-    description: "Preview how your thumbnails look across Instagram, X, TikTok, and more.",
+    description:
+      "Preview how your thumbnails look across Instagram, X, TikTok, and more.",
     icon: GalleryVertical,
     isDisplayed: false,
   },
   {
     slug: "api-sandbox",
     title: "YouTube API Sandbox",
-    description: "Test, fetch, and generate API code snippets for common tasks — no Postman required.",
+    description:
+      "Try YouTube Data API requests, see the real response, and copy ready-made code. No Postman required.",
     icon: Code,
-    isDisplayed: false,
+    isDisplayed: true,
+    isNew: true,
+    metaTitle: "YouTube Data API Sandbox (Online API Tester)",
+    metaDescription:
+      "Test YouTube Data API v3 requests in your browser: videos, channels, playlists, comments and search. See the JSON response and copy cURL, JavaScript or Python code.",
   },
 ];
 

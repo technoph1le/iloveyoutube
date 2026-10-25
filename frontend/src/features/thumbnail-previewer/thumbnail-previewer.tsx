@@ -3,19 +3,8 @@
 /* eslint-disable @next/next/no-img-element -- local blob: URLs of the
    creator's own images; next/image can't optimize those. */
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type DragEvent, type ReactNode } from "react";
-import {
-  CircleAlert,
-  CircleCheck,
-  Eye,
-  ImagePlus,
-  Moon,
-  RotateCcw,
-  Shuffle,
-  Sun,
-  Target,
-  TriangleAlert,
-  X,
-} from "lucide-react";
+import { Eye, ImagePlus, Moon, RotateCcw, Shuffle, Sun, Target, X } from "lucide-react";
+import { CheckLine, type Check } from "@/components/ui/check-line";
 import { buildCards, type Feed, type Mine } from "@/features/thumbnail-previewer/feed";
 import {
   HomeView,
@@ -34,7 +23,6 @@ const MAX_BYTES = 2 * 1024 * 1024; // YouTube's custom thumbnail limit
 const TITLE_LIMIT = 100; // YouTube's title limit
 
 type Variant = { id: string; url: string; name: string; width: number; height: number; bytes: number };
-type Check = { level: "ok" | "warn" | "error"; text: string };
 
 function checkVariant(v: Variant): Check[] {
   const ratio = v.width / v.height;
@@ -487,16 +475,5 @@ function Toggle({
       {icon}
       {label}
     </button>
-  );
-}
-
-function CheckLine({ check }: { check: Check }) {
-  const Icon = check.level === "ok" ? CircleCheck : check.level === "warn" ? TriangleAlert : CircleAlert;
-  const color = check.level === "ok" ? "text-green-500" : check.level === "warn" ? "text-amber-500" : "text-brand";
-  return (
-    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-      <Icon className={`size-3.5 shrink-0 ${color}`} />
-      {check.text}
-    </span>
   );
 }

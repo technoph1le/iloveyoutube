@@ -21,29 +21,7 @@ npm install
 npm run install:all
 ```
 
-### 2. Configure environment variables
-
-```bash
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env.local
-```
-
-**`backend/.env`**
-
-| Variable | Default | Description |
-| --- | --- | --- |
-| `PORT` | `4000` | Port the API listens on. |
-| `YOUTUBE_API_KEY` | — | YouTube Data API v3 key. Optional: the server starts without it, but the previewer feed stays empty. |
-| `YOUTUBE_REGION` | `US` | Two-letter country code for the trending feed. |
-
-**`frontend/.env.local`**
-
-| Variable | Default | Description |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | `https://www.iloveyoutube.dev` | Public address used for canonical URLs, the sitemap and social previews. |
-| `BACKEND_URL` | `http://localhost:4000` | Where `/api/*` is proxied to. Include the protocol and leave off the trailing slash. |
-
-### 3. Run it
+### 2. Run it
 
 ```bash
 npm run dev

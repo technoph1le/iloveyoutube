@@ -13,6 +13,9 @@
 | **[Thumbnail Downloader](https://www.iloveyoutube.dev/tools/thumbnail-downloader)** | Grab any YouTube thumbnail in full resolution. |
 | **[Thumbnail Previewer](https://www.iloveyoutube.dev/tools/thumbnail-previewer)** | See how your thumbnail and title look in a realistic feed on home, search, mobile and TV before you publish, and compare A/B versions. |
 | **[Embed Code Generator](https://www.iloveyoutube.dev/tools/embed-code-generator)** | Customize a YouTube player for your website, preview it live, and copy the code. |
+| **[Safe Zones Overlay](https://www.iloveyoutube.dev/tools/safe-zones-overlay)** | See where YouTube's buttons, captions and badges cover your Shorts, thumbnails, videos and channel banner, and download overlay templates. |
+| **[Description Builder](https://www.iloveyoutube.dev/tools/description-builder)** | Drop in a transcript and AI writes your title, description, chapters and hashtags; your saved links are added, YouTube's limits are checked, and it's ready to copy. |
+| **[YouTube API Sandbox](https://www.iloveyoutube.dev/tools/api-sandbox)** | Try YouTube Data API requests with your own key, see the real response, and copy cURL, JavaScript or Python code. |
 
 More are on the way: transcripts, a chapters generator, a title and description formatter, and a video screenshot tool.
 

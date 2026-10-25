@@ -37,8 +37,8 @@ export default function Page() {
             can&apos;t tell who you are.
           </li>
           <li>
-            Thumbnails you test in the Thumbnail Previewer never leave your
-            device.
+            Images you test in the Thumbnail Previewer and Safe Zones Overlay
+            never leave your device.
           </li>
           <li>
             YouTube&apos;s player only loads in the Embed Code Generator after
@@ -85,7 +85,8 @@ export default function Page() {
         <h3>Using the tools</h3>
         <ul>
           <li>
-            <strong>Thumbnail Previewer:</strong> images, titles and channel
+            <strong>Thumbnail Previewer and Safe Zones Overlay:</strong>{" "}
+            images, titles and channel
             details you enter are processed only in your browser. They are never
             uploaded, and they disappear when you close the tab.
           </li>
@@ -100,6 +101,23 @@ export default function Page() {
             <strong>Images:</strong> YouTube thumbnails and channel pictures are
             loaded through our own server, so your browser doesn&apos;t contact
             Google just by using the tools.
+          </li>
+          <li>
+            <strong>YouTube API Sandbox:</strong> requests you send go directly
+            from your browser to Google&apos;s YouTube Data API, using your own
+            API key. Google then receives your IP address and the request, and
+            its terms and privacy policy apply. Nothing is sent until you press
+            &ldquo;Send request&rdquo;, and your key never reaches our server.
+          </li>
+          <li>
+            <strong>Description Builder:</strong> everything you type stays in
+            your browser until you press &ldquo;Generate with AI&rdquo;. Then
+            your transcript is sent through our server to Anthropic, whose
+            Claude model writes the result. We don&apos;t store the
+            transcript. To prevent abuse, our server counts AI
+            requests per IP address for up to an hour, in memory only. Legal
+            basis: providing the feature you asked for, and our legitimate
+            interest in preventing abuse (GDPR Art. 6(1)(b) and (f)).
           </li>
         </ul>
 
@@ -127,6 +145,18 @@ export default function Page() {
           doesn&apos;t require consent. We use no advertising or tracking
           cookies, and our visitor statistics work without cookies.
         </p>
+        <p>
+          If you tick &ldquo;Remember on this device&rdquo; in the YouTube API
+          Sandbox, your API key is saved in your browser&apos;s local storage
+          so you don&apos;t have to paste it again. It stays on your device;
+          untick the box to delete it.
+        </p>
+        <p>
+          The Description Builder saves your draft (but not your transcript) in
+          local storage, so your links and socials are ready next time.
+          &ldquo;Start a new video&rdquo; clears the title and description;
+          delete your links in the tool to remove them too.
+        </p>
 
         <h2>Who else receives data</h2>
         <ul>
@@ -145,8 +175,15 @@ export default function Page() {
             anonymous page-view data described above on our behalf.
           </li>
           <li>
-            <strong>YouTube (Google):</strong> only if you load the live player,
-            as described above.
+            <strong>AI:</strong>{" "}
+            <ExternalLink href="https://www.anthropic.com/legal/privacy">Anthropic PBC</ExternalLink>{" "}
+            processes the transcripts you send with the Description
+            Builder&apos;s &ldquo;Generate with AI&rdquo; button on our behalf. Under its commercial terms, it doesn&apos;t
+            use that text to train its models.
+          </li>
+          <li>
+            <strong>YouTube (Google):</strong> only if you load the live player
+            or send a request in the API Sandbox, as described above.
           </li>
           <li>
             <strong>Links to other sites:</strong> GitHub, Discord, Ko-fi and
