@@ -1,0 +1,82 @@
+import abShot from "./youtube-thumbnail-ab-testing/previewer-ab.png";
+import feedShot from "./youtube-thumbnail-ab-testing/previewer-home.png";
+
+export const metadata = {
+  title: "YouTube Thumbnail A/B Testing: How Test & Compare Picks a Winner",
+  description:
+    "YouTube's Test & Compare runs up to 3 thumbnails on the same video and picks the winner by watch time, not clicks. Here's how it works, why a clickbait thumbnail can lose, and how to check your options before you test.",
+  publishedAt: "2026-10-27",
+  featured: true,
+  cover: abShot,
+  coverAlt:
+    "Two versions of a thumbnail, A and B, loaded in the Thumbnail Previewer, with version B shown in a YouTube-style search result.",
+};
+
+**Quick answer:** YouTube Studio has a built-in thumbnail A/B test called **Test & Compare**. You upload up to **3 thumbnails** for one video, YouTube shows each to a share of viewers, and it picks the winner by **watch time**, not click-through rate. The test runs on its own until there's a clear result.
+
+It's one of the most debated features among creators, because the "winner" isn't always the thumbnail that got the most clicks.
+
+## How does YouTube's Test & Compare work?
+
+1. In YouTube Studio on a computer, open a video's details and choose **Test & Compare** next to the thumbnail.
+2. Upload two or three thumbnails.
+3. YouTube splits viewers between them and measures how much **watch time** each one brings in.
+4. When one clearly performs better, it becomes the video's thumbnail. If the results are too close to call, you can pick one yourself.
+
+You need access to YouTube's **advanced features** (usually just phone verification) to use it. Availability can vary by channel while YouTube rolls changes out.
+
+## Why does YouTube pick by watch time instead of clicks?
+
+This is the heated part. Click-through rate (CTR) only measures whether people clicked. A thumbnail that over-promises can win the click and then lose the viewer in the first 30 seconds. Watch time rewards the thumbnail that brings in people who actually stay.
+
+In practice:
+
+- **Higher CTR, lower watch time:** the thumbnail is attracting the wrong viewers, or promising something the video doesn't deliver.
+- **Lower CTR, higher watch time:** fewer but better-matched viewers. YouTube treats this as the winner, and recommends the video accordingly.
+
+So don't be surprised when the "boring" thumbnail wins. It's usually the honest one.
+
+## What should you test?
+
+Test **one big idea per version**, not small tweaks. Small changes (a slightly different shade of red) rarely produce a clear result. Better tests:
+
+- **Face vs no face**
+- **Text vs no text**, or 3 words vs 6
+- **The result vs the process** (a finished build vs hands mid-build)
+- **Different promises** ("Best budget mic?" vs "Under $50?!")
+
+## How to check your thumbnails before you test
+
+A live test takes days and uses real viewers. Make sure every version is a real contender first. The [Thumbnail Previewer](/tools/thumbnail-previewer) lets you load up to 3 versions and flip between them in a realistic home feed, search results, Up next, mobile and TV:
+
+<Figure
+  src={abShot}
+  alt="The Thumbnail Previewer with two uploaded versions: A, a dark red 'Best budget mic?' design, and B, a bright yellow 'Under $50?!' design. Version B is selected and shown as a search result with the title 'Best budget mic? I tested 5 under $50' by Creator Lab."
+  caption="Flip between versions A and B to see each one with your real title."
+/>
+
+Look for problems a live test would waste days finding:
+
+- **Is the text readable at feed size?** Turn on the **Squint test** to blur the view, the way a thumbnail looks at a glance.
+- **Does it stand out?** Click **Shuffle** to see it among different neighbours. **Find mine** shows how quickly you can spot it.
+- **Is anything covered?** The duration badge hides the bottom-right corner. Check it with the [Safe Zones Overlay](/tools/safe-zones-overlay).
+
+<Figure
+  src={feedShot}
+  alt="The 'Best budget mic?' thumbnail in a mock YouTube home feed, surrounded by grey placeholder videos, with the duration badge covering part of the $49 price tag."
+  caption="At feed size, the $49 price tag is half hidden by the duration badge. Worth fixing before you test."
+/>
+
+## Frequently asked questions
+
+### Does changing a thumbnail hurt a video?
+
+No. Creators change thumbnails on older videos all the time to revive them. Test & Compare simply makes it measurable.
+
+### How long should a thumbnail test run?
+
+Let YouTube decide. It needs enough views to be confident, so tests on small channels or older videos take longer. Stopping early usually means picking a winner on noise.
+
+### Can I A/B test titles too?
+
+YouTube has been expanding Test & Compare beyond thumbnails, but what's available depends on your channel. Check the Test & Compare option in YouTube Studio to see what you can test.

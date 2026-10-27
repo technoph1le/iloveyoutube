@@ -1,0 +1,71 @@
+import downloaderShot from "./download-youtube-thumbnail/downloader.png";
+
+export const metadata = {
+  title: "How to Download a YouTube Thumbnail in HD (and When You Can Reuse It)",
+  description:
+    "Every YouTube thumbnail lives at i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg, in five sizes up to 1280×720. Here's how to grab the full-resolution version, why some videos don't have one, and what you're allowed to do with it.",
+  publishedAt: "2026-10-27",
+  cover: downloaderShot,
+  coverAlt:
+    "The Thumbnail Downloader showing a video's thumbnail in Full HD 1280×720 with Copy link, Copy image and Download buttons.",
+};
+
+**Quick answer:** paste the video's link into the [Thumbnail Downloader](/tools/thumbnail-downloader) and click **Download** on the Full HD version. Or build the address yourself: take the 11-character video ID from the link and open `https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg`.
+
+You can download any public video's thumbnail. Whether you can **reuse** it is a different question, covered below.
+
+## How to download a YouTube thumbnail
+
+1. Copy the video's link. Any format works: `youtube.com/watch?v=…`, `youtu.be/…`, Shorts, live streams and embed links.
+2. Paste it into the [Thumbnail Downloader](/tools/thumbnail-downloader).
+3. Choose **JPG** or **WebP**, then **Download**, **Copy image** or **Copy link** for the size you want.
+
+<Figure
+  src={downloaderShot}
+  alt="The Thumbnail Downloader with a pasted youtu.be link. It shows the video title and channel, a JPG/WebP switch, the Full HD 1280×720 thumbnail marked 'Best available' with Copy link, Copy image and Download buttons, and below it the Standard 640×480 and High 480×360 versions, each with a Download button."
+  caption="Every size YouTube made for the video, with the best one at the top."
+/>
+
+## What are the YouTube thumbnail URLs?
+
+Every public video's thumbnails sit at predictable addresses. Replace `VIDEO_ID` with the ID from the link (the part after `v=` or `youtu.be/`):
+
+| Size | Dimensions | Address |
+| --- | --- | --- |
+| Full HD | 1280×720 | `i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg` |
+| Standard | 640×480 | `i.ytimg.com/vi/VIDEO_ID/sddefault.jpg` |
+| High | 480×360 | `i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg` |
+| Medium | 320×180 | `i.ytimg.com/vi/VIDEO_ID/mqdefault.jpg` |
+| Small | 120×90 | `i.ytimg.com/vi/VIDEO_ID/default.jpg` |
+
+For WebP, which is smaller at the same quality, use `i.ytimg.com/vi_webp/VIDEO_ID/maxresdefault.webp`.
+
+The Standard, High and Small sizes are 4:3, so a 16:9 thumbnail gets black bars at the top and bottom. Medium and Full HD are 16:9.
+
+## Why is there no HD thumbnail for some videos?
+
+YouTube only creates the 1280×720 version for videos **uploaded in HD**. Older or low-resolution uploads stop at 640×480 or 480×360. Asking for `maxresdefault.jpg` on those returns a grey placeholder image instead of an error, which is confusing. The downloader checks which sizes really exist and only shows those.
+
+## Can I reuse a YouTube thumbnail?
+
+Thumbnails belong to the people who made them, just like the videos. This isn't legal advice, but as a rule of thumb:
+
+- **Usually fine:** saving one for reference or inspiration, studying what works in your niche, or keeping a copy of **your own** thumbnails (for example, when the original file is lost).
+- **Ask first:** republishing someone else's thumbnail, using it in your own video or thumbnail, or using it to promote something.
+- **Commentary and reviews** may count as fair use in some countries, but that depends on how you use it and where you are.
+
+When in doubt, ask the creator. Most are happy to say yes when credited.
+
+## Frequently asked questions
+
+### Can I download the thumbnail of a private or deleted video?
+
+No. Once a video is private or deleted, YouTube stops serving its thumbnails, so there's nothing to download.
+
+### Can I get the thumbnail of a Short?
+
+Yes. Paste the Shorts link the same way. Shorts thumbnails use the same addresses as regular videos.
+
+### I lost the original file of my own thumbnail. Can I get it back?
+
+Yes, up to 1280×720. Paste your video's link and download the Full HD version. YouTube recompresses uploads, so it won't be identical to your original file, but it's usually close enough to reuse or edit.
