@@ -24,12 +24,14 @@ export const siteConfig = {
   },
   // Main navigation in the header.
   nav: [
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
     { href: "/faqs", label: "FAQs" },
     { href: "/sponsor", label: "Sponsor" },
   ],
   // Secondary links in the footer.
   footerNav: [
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
     { href: "/faqs", label: "FAQs" },
     { href: "/sponsor", label: "Sponsor" },

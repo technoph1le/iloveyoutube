@@ -1,13 +1,18 @@
-import { Heart } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Heart } from "lucide-react";
 import { GithubIcon } from "@/components/ui/brand-icons";
 import { ExternalLink } from "@/components/ui/external-link";
 import { JsonLd } from "@/components/ui/json-ld";
+import { PostCard } from "@/components/ui/post-card";
 import { ToolCard } from "@/components/ui/tool-card";
+import { getFeaturedPosts } from "@/data/blog";
 import { siteConfig } from "@/data/site";
 import { displayedTools } from "@/data/tools";
 import { absoluteUrl } from "@/utils/seo";
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getFeaturedPosts();
+
   return (
     <>
       <JsonLd
@@ -69,6 +74,31 @@ export default function Home() {
           </ExternalLink>
           .
         </p>
+      </section>
+
+      <section
+        aria-labelledby="blog-heading"
+        className="mx-auto mt-20 w-full max-w-[1600px] px-4 sm:px-10 xl:px-5"
+      >
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 id="blog-heading" className="text-3xl font-bold">
+            From the blog
+          </h2>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1.5 text-[1.05rem] font-medium hover:text-brand"
+          >
+            All guides
+            <ArrowRight className="size-5" aria-hidden />
+          </Link>
+        </div>
+        <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <li key={post.slug} className="flex">
+              <PostCard post={post} heading="h3" />
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section
