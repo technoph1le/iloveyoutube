@@ -4,6 +4,10 @@ export const GITHUB_URL = "https://github.com/technoph1le/iloveyoutube";
 export const SPONSOR_URL = "https://ko-fi.com/technoph1le";
 export const DISCORD_URL = "https://discord.gg/Nm5K46yUy5";
 export const YOUTUBE_URL = "https://youtube.com/@technoph1le";
+export const REDDIT_URL = "https://www.reddit.com/r/iloveyoutube_official/";
+// With Product Hunt's badge tracking, so clicks show up in its stats.
+export const PRODUCT_HUNT_URL =
+  "https://www.producthunt.com/products/iloveyoutube?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-iloveyoutube";
 
 export const siteConfig = {
   name: "iLoveYouTube",
@@ -20,6 +24,8 @@ export const siteConfig = {
     sponsor: SPONSOR_URL,
     discord: DISCORD_URL,
     youtube: YOUTUBE_URL,
+    reddit: REDDIT_URL,
+    productHunt: PRODUCT_HUNT_URL,
     issues: `${GITHUB_URL}/issues`,
   },
   // Main navigation in the header.
@@ -29,14 +35,24 @@ export const siteConfig = {
     { href: "/faqs", label: "FAQs" },
     { href: "/sponsor", label: "Sponsor" },
   ],
-  // Secondary links in the footer.
+  // Link columns in the footer.
   footerNav: [
-    { href: "/blog", label: "Blog" },
-    { href: "/about", label: "About" },
-    { href: "/faqs", label: "FAQs" },
-    { href: "/sponsor", label: "Sponsor" },
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Use" },
-    { href: "/accessibility", label: "Accessibility" },
+    {
+      title: "Explore",
+      links: [
+        { href: "/blog", label: "Blog" },
+        { href: "/about", label: "About" },
+        { href: "/faqs", label: "FAQs" },
+        { href: "/sponsor", label: "Sponsor" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { href: "/privacy", label: "Privacy Policy" },
+        { href: "/terms", label: "Terms of Use" },
+        { href: "/accessibility", label: "Accessibility" },
+      ],
+    },
   ],
 };
